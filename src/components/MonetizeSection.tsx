@@ -37,7 +37,7 @@ const MonetizeSection: React.FC = () => {
           </p>
           <div className="grid md:grid-cols-2 gap-6 pt-8">
             <div className="flex items-start gap-4 group cursor-pointer">
-              <div className="p-3 bg-purple-100 rounded-xl group-hover:bg-blue-200 transition-colors">
+              <div className="p-3 bg-purple-100 rounded-xl group-hover:bg-purple-200 transition-colors">
                 <Globe className="w-6 h-6 text-purple-600" />
               </div>
               <div>

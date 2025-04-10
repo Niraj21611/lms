@@ -1,59 +1,84 @@
-import { ArrowRight, Trophy, Users } from "lucide-react";
-import Image from "next/image";
+import React from 'react';
+import { Star, ArrowRight, CheckCircle } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <div className="flex justify-center bg-background text-primary-text  py-24 font-plus-jakarta-sans">
-      <div className="flex flex-row items-center justify-between w-full max-w-7xl">
-        <div className="flex flex-col justify-center w-full max-w-xl ">
-          <span className="uppercase font-bold text-blue-500 text-sm bg-blue-100 w-fit py-2 px-3 rounded-sm">
-            Knowledge Delivery
-          </span>
-          <p className="text-5xl font-semibold line-height-2 pt-8 pb-8 leading-13">
-            Build & deliver
-            <br /> courses with ease <br /> all through a <br />
-            <span className="font-bold text-blue-600">unified platform.</span>
-          </p>
-          <p className="font-medium">
-            Host well-structured & engaging courses for your learners. Enhance
-            learner performance & watch your business grow multifold.
-          </p>
-          <div className="grid grid-cols-2 pt-8">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <Users className="w-6 h-6 text-blue-600" />
-              </div>
-              <div>
-                <h3 className="font-semibold">10k+</h3>
-                <p className="text-sm text-gray-600">Active Learners</p>
-              </div>
+    <div className="bg-[#1a472a] min-h-[90vh] flex items-center justify-center px-4 py-16">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div className="space-y-8">
+          <div className="flex items-center gap-2 bg-white/10 w-fit px-4 py-2 rounded-full">
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+              ))}
             </div>
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <Trophy className="w-6 h-6 text-blue-600" />
+            <span className="text-white/90 text-sm">Trusted by 10,000+ students</span>
+          </div>
+
+          <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+            Transform Your Learning Journey with Our{' '}
+            <span className="text-emerald-400">Smart LMS</span>
+          </h1>
+
+          <p className="text-white/80 text-lg md:text-xl max-w-xl">
+            Empower your educational experience with cutting-edge learning tools, interactive content, and personalized pathways to success.
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            <button className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-semibold flex items-center gap-2 transition-all">
+              Get Started Free
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-lg font-semibold transition-all">
+              Watch Demo
+            </button>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-6 pt-4">
+            {[
+              'No credit card required',
+              '14-day free trial',
+              'Cancel anytime'
+            ].map((text, index) => (
+              <div key={index} className="flex items-center gap-2 text-white/80">
+                <CheckCircle className="w-5 h-5 text-emerald-400" />
+                <span>{text}</span>
               </div>
-              <div>
-                <h3 className="font-semibold">95%</h3>
-                <p className="text-sm text-gray-600">Success Rate</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-        <div>
-          <div className="flex flex-col items-center justify-center bg-white w-full max-w-lg p-4 rounded-4xl">
-            <Image
-              src={"/images/landing-2.jpg"}
-              sizes="100vw"
-              className="h-auto w-auto"
-              height={0}
-              width={0}
-              alt="landing-2"
+
+        <div className="relative">
+          <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
+              alt="Students learning"
+              className="w-full h-full object-cover"
             />
-            {/* <p className="text-center text-sm font-semibold">
-              Getting started is easy. Just share your name, contact info, and a
-              bit about your learning needs — and you're all set to begin your
-              journey
-            </p> */}
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/30 to-emerald-700/30 rounded-xl transform translate-x-4 translate-y-4 -z-0"></div>
+
+          <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-lg shadow-xl">
+            <div className="flex items-center gap-4">
+              <div className="flex -space-x-4">
+                {[
+                  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop',
+                  'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop',
+                  'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop'
+                ].map((url, index) => (
+                  <img
+                    key={index}
+                    src={url}
+                    alt={`Student ${index + 1}`}
+                    className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                  />
+                ))}
+              </div>
+              <div>
+                <p className="font-semibold text-gray-800">Join 10,000+ learners</p>
+                <p className="text-sm text-gray-600">Start your journey today</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
