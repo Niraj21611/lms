@@ -1,211 +1,225 @@
-"use client"
+"use client";
 
-import { ChevronLeft, ChevronRight, Clock, Lightbulb, LineChart, PieChart, TrendingUp } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Lightbulb,
+  LineChart,
+  PieChart,
+  TrendingUp,
+} from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.6 },
+  }),
+};
 
 const BusinessSection: React.FC = () => {
+  const testimonials = [
+    {
+      id: 1,
+      name: "Sarah Johnson",
+      role: "Software Developer",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+      quote:
+        "EduFlow transformed my career. The courses are incredibly well-structured and the mentorship is outstanding.",
+    },
+    {
+      id: 2,
+      name: "Michael Chen",
+      role: "UX Designer",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+      quote:
+        "The practical projects and real-world applications have helped me build a portfolio that stands out.",
+    },
+    {
+      id: 3,
+      name: "Emily Rodriguez",
+      role: "Data Scientist",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+      quote:
+        "The community support and expert guidance have been invaluable in my learning journey.",
+    },
+  ];
 
-    const testimonials = [
-        {
-          id: 1,
-          name: "Sarah Johnson",
-          role: "Software Developer",
-          image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-          quote: "EduFlow transformed my career. The courses are incredibly well-structured and the mentorship is outstanding.",
-        },
-        {
-          id: 2,
-          name: "Michael Chen",
-          role: "UX Designer",
-          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-          quote: "The practical projects and real-world applications have helped me build a portfolio that stands out.",
-        },
-        {
-          id: 3,
-          name: "Emily Rodriguez",
-          role: "Data Scientist",
-          image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-          quote: "The community support and expert guidance have been invaluable in my learning journey.",
-        },
-      ];
-    
-      const [currentIndex, setCurrentIndex] = useState(0);
-      const [isAnimating, setIsAnimating] = useState(false);
-    
-      const nextSlide = () => {
-        if (!isAnimating) {
-          setIsAnimating(true);
-          setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-          setTimeout(() => setIsAnimating(false), 500);
-        }
-      };
-    
-      const prevSlide = () => {
-        if (!isAnimating) {
-          setIsAnimating(true);
-          setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-          setTimeout(() => setIsAnimating(false), 500);
-        }
-      };
-    
-      useEffect(() => {
-        const interval = setInterval(nextSlide, 5000);
-        return () => clearInterval(interval);
-      }, []);
-    
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const nextSlide = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      setTimeout(() => setIsAnimating(false), 500);
+    }
+  };
+
+  const prevSlide = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      setTimeout(() => setIsAnimating(false), 500);
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 6000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
 
   return (
-    <>
-    <div className="flex justify-center bg-background text-primary-text  py-24 font-plus-jakarta-sans">
-      <div className="flex flex-row items-center justify-between w-full max-w-7xl">
-        <div>
-          <div className="flex flex-col items-center justify-center bg-white w-full max-w-lg rounded-4xl">
+    <div className="flex justify-center bg-background text-primary-text pt-24 font-plus-jakarta-sans">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-12 px-6">
+        <motion.div
+          className="flex flex-col items-center justify-center w-full max-w-lg space-y-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.4 }}
+            className="overflow-hidden rounded-4xl shadow-xl"
+          >
             <Image
               src={"/images/landing-5.jpg"}
               sizes="100vw"
-              className="h-auto w-auto rounded-4xl"
               height={0}
               width={0}
+              className="h-auto w-auto rounded-4xl"
               alt="landing-5"
             />
-            {/* <p className="text-center text-sm font-semibold">
-                Getting started is easy. Just share your name, contact info, and a
-                bit about your learning needs — and you're all set to begin your
-                journey
-              </p> */}
+          </motion.div>
+
+          <div className="bg-white p-6 rounded-2xl shadow-lg relative w-full max-w-md">
+            <motion.p className="text-md italic text-gray-700 min-h-[96px]" key={currentIndex}>
+              “{testimonials[currentIndex].quote}”
+            </motion.p>
+            <div className="flex items-center gap-3 mt-4">
+              <Image
+                src={testimonials[currentIndex].image}
+                width={40}
+                height={40}
+                alt={testimonials[currentIndex].name}
+                className="rounded-full"
+              />
+              <div>
+                <p className="font-semibold text-sm">{testimonials[currentIndex].name}</p>
+                <p className="text-xs text-gray-500">{testimonials[currentIndex].role}</p>
+              </div>
+            </div>
+            <div className="absolute top-1/2 -left-6 transform -translate-y-1/2">
+              <button onClick={prevSlide}>
+                <ChevronLeft className="w-6 h-6 text-indigo-500 hover:text-indigo-700" />
+              </button>
+            </div>
+            <div className="absolute top-1/2 -right-6 transform -translate-y-1/2">
+              <button onClick={nextSlide}>
+                <ChevronRight className="w-6 h-6 text-indigo-500 hover:text-indigo-700" />
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col justify-center w-full max-w-xl ">
+        </motion.div>
+
+        <motion.div
+          className="flex flex-col justify-center w-full max-w-xl"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
           <span className="uppercase font-bold text-indigo-500 text-sm bg-indigo-100 w-fit py-2 px-3 rounded-sm">
             Business Intelligence & Productivity
           </span>
-          <p className="text-5xl font-semibold line-height-2 pt-8 pb-8">
-            Streamline operations while improving productivity with{" "}
-            <span className="font-bold text-indigo-600">robust tools.</span>
+          <p className="text-5xl font-semibold pt-8 pb-6 leading-tight">
+            Streamline operations with{" "}
+            <span className="text-indigo-600 font-bold">robust tools.</span>
           </p>
-          <p className="font-medium">
-            Save time & money with automation & advanced reporting. Let our
-            robust business intelligence guide your way to success. Transform
-            raw data into actionable strategies while boosting your team's
-            productivity.
+          <p className="font-medium text-gray-700">
+            Save time & money with automation and advanced reporting. Let our business
+            intelligence guide your way to success by transforming raw data into
+            actionable strategies.
           </p>
+
           <div className="grid grid-cols-2 gap-6 mt-8">
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all group cursor-pointer">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-indigo-100 rounded-xl group-hover:bg-indigo-200 transition-colors">
-                  <TrendingUp className="w-6 h-6 text-indigo-600" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900">32%</h3>
-                  <p className="text-sm text-gray-600">Efficiency Increase</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all group cursor-pointer">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-indigo-100 rounded-xl group-hover:bg-indigo-200 transition-colors">
-                  <Clock className="w-6 h-6 text-indigo-600" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900">15hrs</h3>
-                  <p className="text-sm text-gray-600">Time Saved Weekly</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="space-y-4 mt-8">
-              <div className="flex items-center gap-4 bg-white p-4 rounded-xl hover:shadow-md transition-all cursor-pointer group">
-                <div className="p-3 bg-indigo-100 rounded-xl group-hover:bg-indigo-200 transition-colors">
-                  <LineChart className="w-6 h-6 text-indigo-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">Advanced Analytics</h3>
-                  <p className="text-gray-600">Real-time insights and predictive analysis</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 bg-white p-4 rounded-xl hover:shadow-md transition-all cursor-pointer group">
-                <div className="p-3 bg-indigo-100 rounded-xl group-hover:bg-indigo-200 transition-colors">
-                  <PieChart className="w-6 h-6 text-indigo-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">Performance Metrics</h3>
-                  <p className="text-gray-600">Comprehensive reporting and KPI tracking</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 bg-white p-4 rounded-xl hover:shadow-md transition-all cursor-pointer group">
-                <div className="p-3 bg-indigo-100 rounded-xl group-hover:bg-indigo-200 transition-colors">
-                  <Lightbulb className="w-6 h-6 text-indigo-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">Smart Automation</h3>
-                  <p className="text-gray-600">Streamlined workflows and processes</p>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-            <div className="relative overflow-hidden rounded-2xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-              <div className="relative">
-                <div
-                  className={`transition-transform duration-500 ease-in-out ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
-                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <img
-                      src={testimonials[currentIndex].image}
-                      alt={testimonials[currentIndex].name}
-                      className="w-20 h-20 rounded-full object-cover mb-6 ring-4 ring-violet-100"
-                    />
-                    <p className="text-xl text-gray-700 mb-6 italic">
-                      "{testimonials[currentIndex].quote}"
-                    </p>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      {testimonials[currentIndex].name}
-                    </h3>
-                    <p className="text-violet-600">
-                      {testimonials[currentIndex].role}
-                    </p>
+            {[
+              {
+                icon: <TrendingUp className="w-6 h-6 text-indigo-600" />,
+                stat: "32%",
+                desc: "Efficiency Increase",
+              },
+              {
+                icon: <Clock className="w-6 h-6 text-indigo-600" />,
+                stat: "15hrs",
+                desc: "Time Saved Weekly",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all group cursor-pointer"
+                custom={i}
+                variants={fadeUp}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-indigo-100 rounded-xl group-hover:bg-indigo-200 transition-colors">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">{item.stat}</h3>
+                    <p className="text-sm text-gray-600">{item.desc}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
+            ))}
+          </div>
 
-              {/* Navigation Buttons */}
-              <div className="absolute top-1/2 -translate-y-1/2 flex justify-between w-full px-4">
-                <button
-                  onClick={prevSlide}
-                  className="p-2 rounded-full bg-white shadow-lg hover:bg-violet-50 transition-colors group"
-                >
-                  <ChevronLeft className="w-6 h-6 text-violet-600 group-hover:text-violet-700" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="p-2 rounded-full bg-white shadow-lg hover:bg-violet-50 transition-colors group"
-                >
-                  <ChevronRight className="w-6 h-6 text-violet-600 group-hover:text-violet-700" />
-                </button>
-              </div>
-
-              {/* Dots */}
-              <div className="flex justify-center space-x-2 mt-8">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? 'bg-violet-600 w-8'
-                        : 'bg-violet-200 hover:bg-violet-300'
-                    }`}
-                  />
-                ))}
-              </div>
-              </div>
-              </>
+          <motion.div className="space-y-4 mt-8">
+            {[
+              {
+                icon: <LineChart className="w-6 h-6 text-indigo-600" />,
+                title: "Advanced Analytics",
+                desc: "Real-time insights and predictive analysis",
+              },
+              {
+                icon: <PieChart className="w-6 h-6 text-indigo-600" />,
+                title: "Performance Metrics",
+                desc: "Comprehensive reporting and KPI tracking",
+              },
+              {
+                icon: <Lightbulb className="w-6 h-6 text-indigo-600" />,
+                title: "Smart Automation",
+                desc: "Streamlined workflows and processes",
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                className="flex items-center gap-4 bg-white p-4 rounded-xl hover:shadow-md transition-all cursor-pointer group"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="p-3 bg-indigo-100 rounded-xl group-hover:bg-indigo-200 transition-colors">
+                  {item.icon}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                  <p className="text-gray-600">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+    </div>
   );
 };
 
