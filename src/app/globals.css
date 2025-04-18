@@ -40,7 +40,7 @@ body {
 .custom-cursor::after {
   content: '|';
   /* padding: 1rem; */
-  color: #1A472A;        /* your custom color */
+  color: #1A472A;        
   font-weight: bold;
   animation: blink 1s step-start infinite;
   height: 1.3em;         
@@ -48,7 +48,6 @@ body {
    vertical-align: bottom; 
 }
 
-/* Blink animation */
 @keyframes blink {
   50% {
     opacity: 0;

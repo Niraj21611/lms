@@ -5,51 +5,35 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
 const companies = [
-  {
-    name: "Featured-1",
-    logo: "/images/featured/featured-1.jpg",
-  },
-  {
-    name: "Featured-2",
-    logo: "/images/featured/featured-2.jpg",
-  },
-  {
-    name: "Featured-3",
-    logo: "/images/featured/featured-3.jpg",
-  },
-  {
-    name: "Featured-4",
-    logo: "/images/featured/featured-4.jpg",
-  },
-  {
-    name: "Featured-5",
-    logo: "/images/featured/featured-5.jpg",
-  },
-  {
-    name: "Featured-6",
-    logo: "/images/featured/featured-6.jpg",
-  },
-  {
-    name: "Featured-7",
-    logo: "/images/featured/featured-7.jpg",
-  },
-  {
-    name: "Featured-8",
-    logo: "/images/featured/featured-8.jpg",
-  },
+  { name: "Featured-1", logo: "/images/featured/featured-1.jpg" },
+  { name: "Featured-2", logo: "/images/featured/featured-2.jpg" },
+  { name: "Featured-3", logo: "/images/featured/featured-3.jpg" },
+  { name: "Featured-4", logo: "/images/featured/featured-4.jpg" },
+  { name: "Featured-5", logo: "/images/featured/featured-5.jpg" },
+  { name: "Featured-6", logo: "/images/featured/featured-6.jpg" },
+  { name: "Featured-7", logo: "/images/featured/featured-7.jpg" },
+  { name: "Featured-8", logo: "/images/featured/featured-8.jpg" },
 ];
 
 const FeaturedInSection: React.FC = () => {
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "free",
-    slides: {
-      perView: 5,
-      spacing: 60,
-    },
-    renderMode: "performance",
     drag: false,
+    renderMode: "performance",
     initial: 0,
+    slides: {
+      perView: 2,
+      spacing: 24,
+    },
+    breakpoints: {
+      "(min-width: 640px)": {
+        slides: { perView: 3, spacing: 32 },
+      },
+      "(min-width: 1024px)": {
+        slides: { perView: 5, spacing: 60 },
+      },
+    },
     created(s) {
       s.moveToIdx(1, true, { duration: 5000, easing: (t) => t });
     },
@@ -62,10 +46,10 @@ const FeaturedInSection: React.FC = () => {
   });
 
   return (
-    <section id="featured-section" className="pt-24 bg-background overflow-hidden">
+    <section id="featured-section" className="pt-20 sm:pt-24 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-18">
-          <h2 className="text-lg font-plus-jakarta-sans font-semibold text-blue-500 mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-lg font-plus-jakarta-sans font-semibold text-blue-500">
             Featured in
           </h2>
         </div>
@@ -79,8 +63,8 @@ const FeaturedInSection: React.FC = () => {
               <Image
                 src={company.logo}
                 alt={`${company.name} logo`}
-                width={200}
-                height={100}
+                width={160}
+                height={80}
                 className="max-h-20"
                 style={{ width: "auto", height: "auto" }}
               />

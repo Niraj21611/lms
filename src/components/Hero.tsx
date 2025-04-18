@@ -110,17 +110,20 @@ const Hero: React.FC = () => {
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
               alt="Students learning"
               className="w-full h-full object-cover"
+              width={0}
+              height={0}
+              sizes="100vw"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/30 to-emerald-700/30 rounded-xl transform translate-x-4 translate-y-4 -z-0"></div>
+          <div className="md:block hidden absolute inset-0 bg-gradient-to-r from-emerald-500/30 to-emerald-700/30 rounded-xl transform translate-x-4 translate-y-4 -z-0"></div>
 
           <motion.div
-            className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-lg shadow-xl"
+            className="md:block hidden absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-lg shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.8, duration: 0.6 }}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 ">
               <div className="flex -space-x-4">
                 {[
                   "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
@@ -129,9 +132,13 @@ const Hero: React.FC = () => {
                 ].map((url, index) => (
                   <Image
                     key={index}
+                    width={0}
+                    height={0}
+
+
                     src={url}
                     alt={`Student ${index + 1}`}
-                    className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                    className="w-10 h-10 rounded-full border-2  border-white object-cover"
                   />
                 ))}
               </div>

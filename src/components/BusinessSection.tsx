@@ -176,7 +176,7 @@ const BusinessSection: React.FC = () => {
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">{item.stat}</h3>
+                    <h3 className="text-md md:text-2xl font-bold text-gray-900">{item.stat}</h3>
                     <p className="text-sm text-gray-600">{item.desc}</p>
                   </div>
                 </div>

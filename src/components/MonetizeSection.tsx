@@ -15,10 +15,11 @@ const fadeInUp = {
 
 const MonetizeSection: React.FC = () => {
   return (
-    <div className="flex justify-center bg-background text-primary-text py-24 font-plus-jakarta-sans">
-      <div className="flex flex-row items-center justify-between w-full max-w-7xl flex-wrap gap-8">
+    <div className="flex justify-center bg-background text-primary-text py-16 px-4 md:px-8 font-plus-jakarta-sans">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-12">
+        {/* Image Block */}
         <motion.div
-          className="flex flex-col items-center justify-center bg-white w-full max-w-lg p-4 rounded-4xl shadow-xl"
+          className="flex flex-col items-center justify-center bg-white w-full md:max-w-lg p-4 rounded-3xl shadow-xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -27,12 +28,12 @@ const MonetizeSection: React.FC = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
-            className="rounded-xl overflow-hidden"
+            className="rounded-xl overflow-hidden w-full"
           >
             <Image
               src={"/images/landing-3.jpg"}
               sizes="100vw"
-              className="h-auto w-auto rounded-xl"
+              className="w-full h-auto object-cover rounded-xl"
               height={0}
               width={0}
               alt="landing-3"
@@ -40,33 +41,38 @@ const MonetizeSection: React.FC = () => {
           </motion.div>
         </motion.div>
 
+        {/* Text Content */}
         <motion.div
-          className="flex flex-col justify-center w-full max-w-xl"
+          className="flex flex-col justify-center w-full md:max-w-xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <span className="uppercase font-bold text-purple-500 text-sm bg-purple-100 w-fit py-2 px-3 rounded-sm">
+          <span className="uppercase font-bold text-purple-500 text-xs md:text-sm bg-purple-100 w-fit py-1.5 px-3 rounded-sm">
             monetize your expertise
           </span>
 
           <motion.p
-            className="text-5xl font-semibold pt-8 pb-8"
+            className="text-3xl md:text-5xl font-semibold pt-6 md:pt-8 pb-6 md:pb-8 leading-snug md:leading-[3.5rem]"
             variants={fadeInUp}
           >
-            Build a training <br /> academy that`&apos;`s truly yours — fully
-            white-labelled, <span className="font-bold text-purple-600">fully you.</span>
+            Build a training <br /> academy that’s truly yours — fully
+            white-labelled,{" "}
+            <span className="font-bold text-purple-600">fully you.</span>
           </motion.p>
 
-          <motion.p className="font-medium text-gray-700" variants={fadeInUp}>
+          <motion.p
+            className="font-medium text-base md:text-lg text-gray-700"
+            variants={fadeInUp}
+          >
             Step into the spotlight with a white-labelled LMS tailored to your
-            brand`&apos;`s essence. Elevate learning with a unique training experience,
+            brand’s essence. Elevate learning with a unique training experience,
             personalized domain, and dedicated mobile app.
           </motion.p>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-6 pt-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 md:pt-8"
             variants={fadeInUp}
           >
             {[
@@ -97,11 +103,16 @@ const MonetizeSection: React.FC = () => {
             ))}
           </motion.div>
 
-          <motion.div className="flex items-center gap-4 pt-8" variants={fadeInUp}>
-            <div className="flex -space-x-4">
+          <motion.div
+            className="flex flex-col sm:flex-row sm:items-center gap-4 pt-6 md:pt-8"
+            variants={fadeInUp}
+          >
+            <div className="flex -space-x-3">
               {[1, 2, 3, 4].map((i) => (
                 <Image
                   key={i}
+                  width={0}
+                  height={0}
                   src={`https://i.pravatar.cc/40?img=${i}`}
                   alt={`User ${i}`}
                   className="w-10 h-10 rounded-full border-2 border-white"
@@ -113,7 +124,7 @@ const MonetizeSection: React.FC = () => {
                 Trusted by 1000+ creators
               </p>
               <div className="flex items-center text-yellow-400 text-sm">
-                {"★".repeat(5)}{" "}
+                {"★".repeat(5)}
                 <span className="text-gray-600 ml-1">4.9/5</span>
               </div>
             </div>

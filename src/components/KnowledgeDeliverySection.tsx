@@ -28,17 +28,17 @@ const imageFadeIn = {
 
 const KnowledgeDeliverySection: React.FC = () => {
   return (
-    <div className="flex justify-center bg-background text-primary-text pb-24 font-plus-jakarta-sans">
-      <div className="flex flex-row items-center justify-between w-full max-w-7xl flex-wrap gap-12">
+    <div className="flex justify-center bg-background text-primary-text pb-16 px-4 md:px-8 font-plus-jakarta-sans">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-12">
         {/* Left Column */}
         <motion.div
-          className="flex flex-col justify-center w-full max-w-xl"
+          className="flex flex-col justify-center w-full md:max-w-xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
         >
           <motion.span
-            className="uppercase font-bold text-blue-500 text-sm bg-blue-100 w-fit py-2 px-3 rounded-sm"
+            className="uppercase font-bold text-blue-500 text-xs md:text-sm bg-blue-100 w-fit py-1.5 px-3 rounded-sm"
             variants={fadeUp}
             custom={0}
           >
@@ -46,7 +46,7 @@ const KnowledgeDeliverySection: React.FC = () => {
           </motion.span>
 
           <motion.p
-            className="text-5xl font-semibold pt-8 pb-8 leading-13"
+            className="text-3xl md:text-5xl font-semibold pt-6 md:pt-8 pb-6 md:pb-8 leading-snug md:leading-[3.5rem]"
             variants={fadeUp}
             custom={1}
           >
@@ -55,13 +55,17 @@ const KnowledgeDeliverySection: React.FC = () => {
             <span className="font-bold text-blue-600">unified platform.</span>
           </motion.p>
 
-          <motion.p className="font-medium" variants={fadeUp} custom={2}>
+          <motion.p
+            className="font-medium text-base md:text-lg text-gray-700"
+            variants={fadeUp}
+            custom={2}
+          >
             Host well-structured & engaging courses for your learners. Enhance
             learner performance & watch your business grow multifold.
           </motion.p>
 
           <motion.div
-            className="grid grid-cols-2 pt-8 gap-6"
+            className="grid grid-cols-2 pt-6 md:pt-8 gap-6"
             variants={fadeUp}
             custom={3}
           >
@@ -70,7 +74,7 @@ const KnowledgeDeliverySection: React.FC = () => {
                 <Users className="w-6 h-6 text-blue-600" />
               </div>
               <div>
-                <h3 className="font-semibold">10k+</h3>
+                <h3 className="font-semibold text-base md:text-lg">10k+</h3>
                 <p className="text-sm text-gray-600">Active Learners</p>
               </div>
             </div>
@@ -79,7 +83,7 @@ const KnowledgeDeliverySection: React.FC = () => {
                 <Trophy className="w-6 h-6 text-blue-600" />
               </div>
               <div>
-                <h3 className="font-semibold">95%</h3>
+                <h3 className="font-semibold text-base md:text-lg">95%</h3>
                 <p className="text-sm text-gray-600">Success Rate</p>
               </div>
             </div>
@@ -88,7 +92,7 @@ const KnowledgeDeliverySection: React.FC = () => {
 
         {/* Right Image */}
         <motion.div
-          className="flex flex-col items-center justify-center bg-white w-full max-w-lg p-4 rounded-4xl shadow-2xl"
+          className="flex flex-col items-center justify-center bg-white w-full md:max-w-lg p-4 rounded-2xl shadow-2xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -97,12 +101,12 @@ const KnowledgeDeliverySection: React.FC = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="rounded-xl overflow-hidden"
+            className="rounded-xl overflow-hidden w-full"
           >
             <Image
               src={"/images/landing-2.jpg"}
               sizes="100vw"
-              className="h-auto w-auto rounded-xl"
+              className="h-auto w-full object-cover rounded-xl"
               height={0}
               width={0}
               alt="landing-2"

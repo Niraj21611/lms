@@ -15,33 +15,41 @@ const fadeUp = {
 
 const CommunicateSection: React.FC = () => {
   return (
-    <div className="flex justify-center bg-background text-primary-text py-24 font-plus-jakarta-sans">
-      <div className="flex flex-row items-center justify-between w-full max-w-7xl flex-wrap gap-8">
+    <div className="flex justify-center bg-background text-primary-text py-16 px-4 md:px-8 font-plus-jakarta-sans">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-12">
+        {/* Text Column */}
         <motion.div
-          className="flex flex-col justify-center w-full max-w-xl"
+          className="flex flex-col justify-center w-full md:max-w-xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <span className="uppercase font-bold text-green-500 text-sm bg-green-100 w-fit py-2 px-3 rounded-sm">
+          <span className="uppercase font-bold text-green-500 text-xs md:text-sm bg-green-100 w-fit py-1.5 px-3 rounded-sm">
             Communicate efficiently
           </span>
 
-          <motion.p className="text-5xl font-semibold pt-8 pb-8" variants={fadeUp}>
+          <motion.p
+            className="text-3xl md:text-5xl font-semibold pt-6 md:pt-8 pb-6 md:pb-8 leading-snug md:leading-[3.5rem]"
+            variants={fadeUp}
+          >
             Enhance learner engagement &{" "}
             <span className="font-bold text-green-600">retention.</span>
           </motion.p>
 
-          <motion.p className="font-medium text-gray-700" variants={fadeUp}>
+          <motion.p
+            className="font-medium text-base md:text-lg text-gray-700"
+            variants={fadeUp}
+          >
             Make the most of e-learning by fostering deeper connections, and
-            watch retention rates soar. Transform your teaching approach for the
-            modern age by ensuring every learner is captivated, committed, and
-            coming back for more.
+            watch retention rates soar. Transform your teaching approach for
+            the modern age by ensuring every learner is captivated, committed,
+            and coming back for more.
           </motion.p>
 
+          {/* Stats */}
           <motion.div
-            className="grid md:grid-cols-3 gap-6 mt-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 md:mt-8"
             variants={fadeUp}
           >
             {[
@@ -86,7 +94,8 @@ const CommunicateSection: React.FC = () => {
             ))}
           </motion.div>
 
-          <motion.div className="space-y-4 mt-8" variants={fadeUp}>
+          {/* Feature List */}
+          <motion.div className="space-y-4 mt-6 md:mt-8" variants={fadeUp}>
             {[
               {
                 icon: <Users className="w-6 h-6 text-green-600" />,
@@ -116,8 +125,9 @@ const CommunicateSection: React.FC = () => {
           </motion.div>
         </motion.div>
 
+        {/* Image Column */}
         <motion.div
-          className="flex flex-col items-center justify-center bg-white w-full max-w-lg p-4 rounded-4xl shadow-xl"
+          className="flex flex-col items-center justify-center bg-white w-full md:max-w-lg p-4 rounded-3xl shadow-xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -126,12 +136,12 @@ const CommunicateSection: React.FC = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
-            className="rounded-xl overflow-hidden"
+            className="rounded-xl overflow-hidden w-full"
           >
             <Image
               src={"/images/landing-4.jpg"}
               sizes="100vw"
-              className="h-auto w-auto rounded-xl"
+              className="w-full h-auto object-cover rounded-xl"
               height={0}
               width={0}
               alt="landing-4"
