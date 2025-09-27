@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
           {/* Logo and Brand */}
           <div className="flex-shrink-0 flex items-center">
             <GraduationCap className="h-8 w-8 text-emerald-400" />
-            <span className="ml-2 text-white font-bold text-xl">LMS</span>
+            <span className="ml-2 text-white font-bold text-xl">Raah</span>
           </div>
 
           {/* Desktop Navigation */}
