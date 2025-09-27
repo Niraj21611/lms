@@ -26,30 +26,30 @@ const BusinessSection: React.FC = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      role: "Software Developer",
+      name: "Ravi Kumar",
+      role: "IIT-JEE Aspirant",
       image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
       quote:
-        "EduFlow transformed my career. The courses are incredibly well-structured and the mentorship is outstanding.",
+        "The guidance and structured study plan helped me crack the IIT-JEE with confidence!",
     },
     {
       id: 2,
-      name: "Michael Chen",
-      role: "UX Designer",
+      name: "Priya Sharma",
+      role: "NEET Aspirant",
       image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop",
       quote:
-        "The practical projects and real-world applications have helped me build a portfolio that stands out.",
+        "The personalized mentoring and doubt-clearing sessions made all the difference in my preparation.",
     },
     {
       id: 3,
-      name: "Emily Rodriguez",
-      role: "Data Scientist",
+      name: "Amit Singh",
+      role: "UPSC Aspirant",
       image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+        "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop",
       quote:
-        "The community support and expert guidance have been invaluable in my learning journey.",
+        "The expert faculty and well-structured courses gave me the confidence to excel in the exams.",
     },
   ];
 
@@ -67,7 +67,9 @@ const BusinessSection: React.FC = () => {
   const prevSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
-      setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      setCurrentIndex(
+        (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      );
       setTimeout(() => setIsAnimating(false), 500);
     }
   };
@@ -75,11 +77,12 @@ const BusinessSection: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, 6000);
     return () => clearInterval(interval);
-  }, [nextSlide]);
+  }, [currentIndex]);
 
   return (
     <div className="flex justify-center bg-background text-primary-text pt-24 font-plus-jakarta-sans">
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-12 px-6">
+        {/* Left Side - Image & Testimonials */}
         <motion.div
           className="flex flex-col items-center justify-center w-full max-w-lg space-y-8"
           initial="hidden"
@@ -98,12 +101,15 @@ const BusinessSection: React.FC = () => {
               height={0}
               width={0}
               className="h-auto w-auto rounded-4xl"
-              alt="landing-5"
+              alt="Coaching students"
             />
           </motion.div>
 
           <div className="bg-white p-6 rounded-2xl shadow-lg relative w-full max-w-md">
-            <motion.p className="text-md italic text-gray-700 min-h-[96px]" key={currentIndex}>
+            <motion.p
+              className="text-md italic text-gray-700 min-h-[96px]"
+              key={currentIndex}
+            >
               “{testimonials[currentIndex].quote}”
             </motion.p>
             <div className="flex items-center gap-3 mt-4">
@@ -115,8 +121,12 @@ const BusinessSection: React.FC = () => {
                 className="rounded-full"
               />
               <div>
-                <p className="font-semibold text-sm">{testimonials[currentIndex].name}</p>
-                <p className="text-xs text-gray-500">{testimonials[currentIndex].role}</p>
+                <p className="font-semibold text-sm">
+                  {testimonials[currentIndex].name}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {testimonials[currentIndex].role}
+                </p>
               </div>
             </div>
             <div className="absolute top-1/2 -left-6 transform -translate-y-1/2">
@@ -132,6 +142,7 @@ const BusinessSection: React.FC = () => {
           </div>
         </motion.div>
 
+        {/* Right Side - Academy Info */}
         <motion.div
           className="flex flex-col justify-center w-full max-w-xl"
           initial="hidden"
@@ -140,29 +151,34 @@ const BusinessSection: React.FC = () => {
           variants={fadeUp}
         >
           <span className="uppercase font-bold text-indigo-500 text-sm bg-indigo-100 w-fit py-2 px-3 rounded-sm">
-            Business Intelligence & Productivity
+            Academic Excellence & Student Success
           </span>
+
           <p className="text-5xl font-semibold pt-8 pb-6 leading-tight">
-            Streamline operations with{" "}
-            <span className="text-indigo-600 font-bold">robust tools.</span>
-          </p>
-          <p className="font-medium text-gray-700">
-            Save time & money with automation and advanced reporting. Let our business
-            intelligence guide your way to success by transforming raw data into
-            actionable strategies.
+            Empower students with{" "}
+            <span className="text-indigo-600 font-bold">
+              proven learning strategies
+            </span>
           </p>
 
+          <p className="font-medium text-gray-700">
+            Help students master concepts faster, build confidence, and achieve
+            top results with structured guidance, expert mentorship, and
+            effective study techniques tailored to India’s competitive exams.
+          </p>
+
+          {/* Key Benefits / Stats */}
           <div className="grid grid-cols-2 gap-6 mt-8">
             {[
               {
                 icon: <TrendingUp className="w-6 h-6 text-indigo-600" />,
-                stat: "32%",
-                desc: "Efficiency Increase",
+                stat: "95%",
+                desc: "Students Passing Exams",
               },
               {
                 icon: <Clock className="w-6 h-6 text-indigo-600" />,
-                stat: "15hrs",
-                desc: "Time Saved Weekly",
+                stat: "200+",
+                desc: "Hours of Mentorship Provided",
               },
             ].map((item, i) => (
               <motion.div
@@ -176,7 +192,9 @@ const BusinessSection: React.FC = () => {
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="text-md md:text-2xl font-bold text-gray-900">{item.stat}</h3>
+                    <h3 className="text-md md:text-2xl font-bold text-gray-900">
+                      {item.stat}
+                    </h3>
                     <p className="text-sm text-gray-600">{item.desc}</p>
                   </div>
                 </div>
@@ -184,22 +202,23 @@ const BusinessSection: React.FC = () => {
             ))}
           </div>
 
+          {/* Features / Services */}
           <motion.div className="space-y-4 mt-8">
             {[
               {
                 icon: <LineChart className="w-6 h-6 text-indigo-600" />,
-                title: "Advanced Analytics",
-                desc: "Real-time insights and predictive analysis",
+                title: "Personalized Study Plans",
+                desc: "Tailored programs for each student to maximize success",
               },
               {
                 icon: <PieChart className="w-6 h-6 text-indigo-600" />,
-                title: "Performance Metrics",
-                desc: "Comprehensive reporting and KPI tracking",
+                title: "Mock Tests & Assessments",
+                desc: "Regular evaluations to track progress and improve performance",
               },
               {
                 icon: <Lightbulb className="w-6 h-6 text-indigo-600" />,
-                title: "Smart Automation",
-                desc: "Streamlined workflows and processes",
+                title: "Expert Mentorship",
+                desc: "Guidance from experienced educators and exam strategists",
               },
             ].map((item, idx) => (
               <motion.div

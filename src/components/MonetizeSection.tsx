@@ -50,16 +50,16 @@ const MonetizeSection: React.FC = () => {
           variants={fadeInUp}
         >
           <span className="uppercase font-bold text-purple-500 text-xs md:text-sm bg-purple-100 w-fit py-1.5 px-3 rounded-sm">
-            monetize your expertise
+            Empower Young Minds
           </span>
 
           <motion.p
             className="text-3xl md:text-5xl font-semibold pt-6 md:pt-8 pb-6 md:pb-8 leading-snug md:leading-[3.5rem]"
             variants={fadeInUp}
           >
-            Build a coaching <br /> academy that helps students{" "}
+            Build a coaching <br /> academy that guides students{" "}
             <span className="font-bold text-purple-600">
-              achieve their dreams.
+              to excel in exams and life
             </span>
           </motion.p>
 
@@ -67,8 +67,9 @@ const MonetizeSection: React.FC = () => {
             className="font-medium text-base md:text-lg text-gray-700"
             variants={fadeInUp}
           >
-            Inspire confidence, nurture talent, and provide a personalized
-            learning experience that empowers every student to excel.
+            Foster confidence, develop skills, and deliver a personalized
+            learning experience designed for success in India’s competitive
+            education landscape.
           </motion.p>
 
           <motion.div
