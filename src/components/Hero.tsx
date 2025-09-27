@@ -72,15 +72,15 @@ const Hero: React.FC = () => {
             variants={fadeUp}
           >
             <button className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-semibold flex items-center gap-2 transition-all">
-              Get Started Free
+              Join Our Academy
               <ArrowRight className="w-5 h-5" />
             </button>
             <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-lg font-semibold transition-all">
-              Watch Demo
+              Explore Programs
             </button>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             className="flex flex-col sm:flex-row gap-6 pt-4 font-manrope"
             custom={4}
             variants={fadeUp}
@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
                 <span>{text}</span>
               </div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* Right Content */}
