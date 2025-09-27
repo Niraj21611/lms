@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Raah Academy",
-  description: "Raah Academy - Your journey to success starts here.",
+  description: "Raah Academy - Your journey to success starts here",
 };
 
 export default function RootLayout({
