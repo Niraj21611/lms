@@ -62,8 +62,8 @@ const Hero: React.FC = () => {
             custom={2}
             variants={fadeUp}
           >
-            Deliver training programs, convert insights into profit, and build
-            lasting learner loyalty—all under your brand
+            Deliver quality coaching, inspire confidence, and help every learner
+            reach their highest potential.
           </motion.p>
 
           <motion.div
@@ -90,7 +90,10 @@ const Hero: React.FC = () => {
               "14-day free trial",
               "Cancel anytime",
             ].map((text, index) => (
-              <div key={index} className="flex items-center gap-2 text-white/80">
+              <div
+                key={index}
+                className="flex items-center gap-2 text-white/80"
+              >
                 <CheckCircle className="w-5 h-5 text-emerald-400" />
                 <span>{text}</span>
               </div>
@@ -134,8 +137,6 @@ const Hero: React.FC = () => {
                     key={index}
                     width={0}
                     height={0}
-
-
                     src={url}
                     alt={`Student ${index + 1}`}
                     className="w-10 h-10 rounded-full border-2  border-white object-cover"
@@ -146,7 +147,9 @@ const Hero: React.FC = () => {
                 <p className="font-semibold text-gray-800">
                   Join 10,000+ learners
                 </p>
-                <p className="text-sm text-gray-600">Start your journey today</p>
+                <p className="text-sm text-gray-600">
+                  Start your journey today
+                </p>
               </div>
             </div>
           </motion.div>

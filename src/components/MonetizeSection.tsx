@@ -57,18 +57,18 @@ const MonetizeSection: React.FC = () => {
             className="text-3xl md:text-5xl font-semibold pt-6 md:pt-8 pb-6 md:pb-8 leading-snug md:leading-[3.5rem]"
             variants={fadeInUp}
           >
-            Build a training <br /> academy that’s truly yours — fully
-            white-labelled,{" "}
-            <span className="font-bold text-purple-600">fully you.</span>
+            Build a coaching <br /> academy that helps students{" "}
+            <span className="font-bold text-purple-600">
+              achieve their dreams.
+            </span>
           </motion.p>
 
           <motion.p
             className="font-medium text-base md:text-lg text-gray-700"
             variants={fadeInUp}
           >
-            Step into the spotlight with a white-labelled LMS tailored to your
-            brand’s essence. Elevate learning with a unique training experience,
-            personalized domain, and dedicated mobile app.
+            Inspire confidence, nurture talent, and provide a personalized
+            learning experience that empowers every student to excel.
           </motion.p>
 
           <motion.div
@@ -78,13 +78,13 @@ const MonetizeSection: React.FC = () => {
             {[
               {
                 icon: <Globe className="w-6 h-6 text-purple-600" />,
-                title: "Custom Domain",
-                desc: "Your brand, your domain",
+                title: "Expert Faculty",
+                desc: "Learn from India’s top educators",
               },
               {
                 icon: <Smartphone className="w-6 h-6 text-purple-600" />,
-                title: "Support",
-                desc: "Dedicated support",
+                title: "Comprehensive Study Material",
+                desc: "Covering every concept in detail",
               },
             ].map((item, idx) => (
               <motion.div

@@ -20,12 +20,12 @@ const UpscaleHero: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-plus-jakarta-sans text-indigo-950 font-bold leading-tight">
-            Upscale Your Training Business Today
+            Transform Learning, Inspire Growth
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-indigo-950 max-w-2xl mx-auto mt-4 leading-relaxed">
-            Improve productivity in your training business <br className="hidden sm:block" />
-            while delivering educational excellence!
+            Deliver quality education, boost student confidence, and help every
+            learner reach their true potential.
           </p>
 
           <div className="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
