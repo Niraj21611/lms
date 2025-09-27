@@ -34,7 +34,7 @@ const UpscaleHero: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="px-5 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-medium text-sm transition-colors duration-200 shadow-lg w-full sm:w-auto"
             >
-              Book a demo
+              Join our academy
             </motion.button>
 
             <motion.button
@@ -42,7 +42,7 @@ const UpscaleHero: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="px-5 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-50 rounded-lg font-medium text-sm transition-colors duration-200 w-full sm:w-auto"
             >
-              Start free trial
+              Explore programs
             </motion.button>
           </div>
         </motion.div>
