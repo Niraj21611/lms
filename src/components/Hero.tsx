@@ -53,8 +53,8 @@ const Hero: React.FC = () => {
             custom={1}
             variants={fadeUp}
           >
-            <RotatingText /> your training business with{" "}
-            <span className="text-emerald-400">ZERO operational hassles</span>
+            <RotatingText /> your journey with{" "}
+            <span className="text-emerald-400">personalized learning</span>
           </motion.h1>
 
           <motion.p
