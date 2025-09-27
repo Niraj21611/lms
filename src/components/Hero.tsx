@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Star, ArrowRight, CheckCircle } from "lucide-react";
+import { Star, ArrowRight} from "lucide-react";
 import RotatingText from "./RotatingText";
 import { motion } from "framer-motion";
 import Image from "next/image";
