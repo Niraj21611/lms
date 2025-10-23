@@ -1,5 +1,6 @@
 import BusinessSection from "@/components/BusinessSection";
 import CommunicateSection from "@/components/CommunicateSection";
+import ExternalTeacherSection from "@/components/ExternalTeacherSection";
 import FeaturedInSection from "@/components/FeaturedInSection";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
@@ -19,6 +20,7 @@ export default function Home() {
       <MonetizeSection/>
       <CommunicateSection/>
       <BusinessSection/>
+      <ExternalTeacherSection />
       <FeaturedInSection />
       <UpscaleHero />
       <Footer />

@@ -5,19 +5,21 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
 const CommunicateSection: React.FC = () => {
   return (
-    <div className="flex justify-center bg-background text-primary-text py-16 px-4 md:px-8 font-plus-jakarta-sans">
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-12">
-        {/* Text Column */}
+    <div className="flex justify-center bg-white py-24 px-4 md:px-8 relative overflow-hidden">
+      <div className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-primary/20 to-teal/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-10 w-72 h-72 bg-gradient-to-br from-purple/15 to-primary/15 rounded-full blur-3xl" />
+      
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-16 relative z-10">
         <motion.div
           className="flex flex-col justify-center w-full md:max-w-xl"
           initial="hidden"
@@ -25,59 +27,57 @@ const CommunicateSection: React.FC = () => {
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <span className="uppercase font-bold text-green-500 text-xs md:text-sm bg-green-100 w-fit py-1.5 px-3 rounded-sm">
-            Communicate efficiently
+          <span className="uppercase font-medium text-teal text-xs tracking-wide">
+            Communicate Efficiently
           </span>
 
           <motion.p
-            className="text-3xl md:text-5xl font-semibold pt-6 md:pt-8 pb-6 md:pb-8 leading-snug md:leading-[3.5rem]"
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold pt-6 pb-8 leading-tight tracking-tight bg-gradient-to-r from-neutral-900 to-neutral-700 bg-clip-text text-transparent"
             variants={fadeUp}
           >
-            Enhance learner engagement &{" "}
-            <span className="font-bold text-green-600">retention.</span>
+            Enhance learner engagement & retention
           </motion.p>
 
           <motion.p
-            className="font-medium text-base md:text-lg text-gray-700"
+            className="font-normal text-lg text-neutral-600 leading-relaxed"
             variants={fadeUp}
           >
-            Make the most of e-learning by fostering deeper connections, and
-            watch retention rates soar. Transform your teaching approach for
-            the modern age by ensuring every learner is captivated, committed,
-            and coming back for more.
+            Make the most of e-learning by fostering deeper connections, and watch retention rates soar. Transform your teaching approach for the modern age.
           </motion.p>
 
-          {/* Stats */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 md:mt-8"
+            className="grid grid-cols-3 gap-4 mt-8"
             variants={fadeUp}
           >
             {[
               {
-                icon: <Target className="w-5 h-5 text-green-600" />,
+                icon: <Target className="w-5 h-5 text-white" strokeWidth={1.5} />,
                 value: "95%",
-                label: "Completion Rate",
+                label: "Completion",
+                gradient: "from-primary to-primary-light",
               },
               {
-                icon: <Brain className="w-5 h-5 text-green-600" />,
+                icon: <Brain className="w-5 h-5 text-white" strokeWidth={1.5} />,
                 value: "87%",
-                label: "Knowledge Retention",
+                label: "Retention",
+                gradient: "from-teal to-teal-light",
               },
               {
-                icon: <Zap className="w-5 h-5 text-green-600" />,
+                icon: <Zap className="w-5 h-5 text-white" strokeWidth={1.5} />,
                 value: "2.5x",
-                label: "Engagement Boost",
+                label: "Engagement",
+                gradient: "from-purple to-purple-light",
               },
             ].map((stat, idx) => (
               <motion.div
                 key={idx}
-                className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow"
-                whileHover={{ scale: 1.03 }}
+                className="bg-white p-4 rounded-2xl border border-neutral-200 shadow-lg hover:shadow-xl transition-all duration-300"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
+                whileHover={{ scale: 1.05, y: -4 }}
                 variants={{
-                  hidden: { opacity: 0, y: 30 },
+                  hidden: { opacity: 0, y: 20 },
                   visible: {
                     opacity: 1,
                     y: 0,
@@ -85,68 +85,64 @@ const CommunicateSection: React.FC = () => {
                   },
                 }}
               >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 bg-green-100 rounded-lg">{stat.icon}</div>
-                  <h3 className="font-semibold text-2xl">{stat.value}</h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className={`p-2 bg-gradient-to-br ${stat.gradient} rounded-lg`}>{stat.icon}</div>
                 </div>
-                <p className="text-sm text-gray-600">{stat.label}</p>
+                <h3 className="font-semibold text-xl text-neutral-900">{stat.value}</h3>
+                <p className="text-xs text-neutral-600 mt-1">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Feature List */}
-          <motion.div className="space-y-4 mt-6 md:mt-8" variants={fadeUp}>
+          <motion.div className="space-y-4 mt-8" variants={fadeUp}>
             {[
               {
-                icon: <Users className="w-6 h-6 text-green-600" />,
+                icon: <Users className="w-6 h-6 text-white" strokeWidth={1.5} />,
                 title: "Interactive Learning Communities",
                 desc: "Foster peer-to-peer learning and collaboration",
+                gradient: "from-primary to-primary-light",
               },
               {
-                icon: <BarChart className="w-6 h-6 text-green-600" />,
+                icon: <BarChart className="w-6 h-6 text-white" strokeWidth={1.5} />,
                 title: "Progress Tracking",
                 desc: "Real-time insights into learner performance",
+                gradient: "from-teal to-teal-light",
               },
             ].map((feature, idx) => (
               <motion.div
                 key={idx}
-                className="flex items-center gap-4 bg-white p-4 rounded-xl hover:shadow-md transition-all cursor-pointer group"
-                whileHover={{ scale: 1.02 }}
+                className="flex items-center gap-4 p-5 rounded-2xl bg-neutral-50 border border-neutral-200 hover:bg-white hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.02, x: 8 }}
               >
-                <div className="p-3 bg-green-100 rounded-xl group-hover:bg-green-200 transition-colors">
+                <div className={`p-3 bg-gradient-to-br ${feature.gradient} rounded-xl shadow-lg`}>
                   {feature.icon}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.desc}</p>
+                  <h3 className="font-semibold text-neutral-900">{feature.title}</h3>
+                  <p className="text-neutral-600">{feature.desc}</p>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
 
-        {/* Image Column */}
         <motion.div
-          className="flex flex-col items-center justify-center bg-white w-full md:max-w-lg p-4 rounded-3xl shadow-xl"
+          className="flex flex-col items-center justify-center w-full md:max-w-lg rounded-3xl overflow-hidden"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.3 }}
         >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.4 }}
-            className="rounded-xl overflow-hidden w-full"
-          >
-            <Image
-              src={"/images/landing-4.jpg"}
-              sizes="100vw"
-              className="w-full h-auto object-cover rounded-xl"
-              height={0}
-              width={0}
-              alt="landing-4"
-            />
-          </motion.div>
+          <Image
+            src={"/images/landing-4.jpg"}
+            sizes="100vw"
+            className="w-full h-auto object-cover rounded-3xl shadow-xl"
+            height={600}
+            width={800}
+            alt="Learning engagement"
+          />
         </motion.div>
       </div>
     </div>
