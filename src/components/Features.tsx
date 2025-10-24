@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Zap, Shield, Target, Rocket } from "lucide-react";
+import FloatingShapes from "./FloatingShapes";
 
 const Features: React.FC = () => {
   const features = [
@@ -34,11 +35,8 @@ const Features: React.FC = () => {
 
   return (
     <div className="relative py-24 px-4 bg-white overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-coral/10 rounded-full blur-3xl" />
-      </div>
+      {/* Floating Shapes */}
+      <FloatingShapes variant="minimal" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">

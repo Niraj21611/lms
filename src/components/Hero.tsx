@@ -7,14 +7,19 @@ import { motion } from "framer-motion";
 const Hero: React.FC = () => {
   return (
     <div className="relative bg-white min-h-screen flex items-center justify-center px-4 py-32 overflow-hidden">
-      {/* Subtle Abstract Background Elements */}
+      {/* Abstract Floating Shapes Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Top left gradient blob */}
+        {/* Large gradient blob - top left */}
         <motion.div
-          className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-gradient-to-br from-primary/10 via-purple/5 to-transparent rounded-full blur-3xl"
+          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, rgba(124, 58, 237, 0.05) 50%, transparent 70%)',
+            filter: 'blur(60px)',
+          }}
           animate={{
             scale: [1, 1.1, 1],
-            opacity: [0.3, 0.5, 0.3],
+            x: [0, 30, 0],
+            y: [0, -30, 0],
           }}
           transition={{
             duration: 8,
@@ -22,13 +27,18 @@ const Hero: React.FC = () => {
             ease: "easeInOut",
           }}
         />
-        
-        {/* Bottom right gradient blob */}
+
+        {/* Large gradient blob - bottom right */}
         <motion.div
-          className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-gradient-to-br from-coral/10 via-teal/5 to-transparent rounded-full blur-3xl"
+          className="absolute -bottom-40 -right-40 w-[700px] h-[700px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(255, 107, 107, 0.08) 0%, rgba(20, 184, 166, 0.06) 50%, transparent 70%)',
+            filter: 'blur(60px)',
+          }}
           animate={{
             scale: [1.1, 1, 1.1],
-            opacity: [0.3, 0.5, 0.3],
+            x: [0, -40, 0],
+            y: [0, 40, 0],
           }}
           transition={{
             duration: 10,
@@ -37,12 +47,110 @@ const Hero: React.FC = () => {
           }}
         />
 
-        {/* Floating circles */}
+        {/* Medium blob - top right */}
         <motion.div
-          className="absolute top-1/4 right-1/4 w-2 h-2 bg-primary/20 rounded-full"
+          className="absolute top-20 right-20 w-[400px] h-[400px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, transparent 70%)',
+            filter: 'blur(50px)',
+          }}
+          animate={{
+            y: [0, -40, 0],
+            x: [0, 20, 0],
+            scale: [1, 1.15, 1],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+
+        {/* Medium blob - bottom left */}
+        <motion.div
+          className="absolute bottom-32 left-20 w-[350px] h-[350px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(20, 184, 166, 0.07) 0%, transparent 70%)',
+            filter: 'blur(45px)',
+          }}
+          animate={{
+            y: [0, 35, 0],
+            x: [0, -25, 0],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5,
+          }}
+        />
+
+        {/* Small floating circle - coral */}
+        <motion.div
+          className="absolute top-1/4 right-1/3 w-32 h-32 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(255, 107, 107, 0.12) 0%, rgba(255, 107, 107, 0.04) 50%, transparent 100%)',
+            filter: 'blur(25px)',
+          }}
           animate={{
             y: [0, -30, 0],
-            opacity: [0.3, 0.8, 0.3],
+            x: [0, 15, 0],
+            opacity: [0.5, 0.8, 0.5],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* Small floating circle - blue */}
+        <motion.div
+          className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, rgba(0, 102, 255, 0.03) 50%, transparent 100%)',
+            filter: 'blur(30px)',
+          }}
+          animate={{
+            y: [0, 40, 0],
+            x: [0, -20, 0],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.5,
+          }}
+        />
+
+        {/* Small floating circle - purple */}
+        <motion.div
+          className="absolute top-1/3 left-1/4 w-36 h-36 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, rgba(124, 58, 237, 0.03) 50%, transparent 100%)',
+            filter: 'blur(28px)',
+          }}
+          animate={{
+            y: [0, -35, 0],
+            x: [0, 18, 0],
+            opacity: [0.5, 0.9, 0.5],
+          }}
+          transition={{
+            duration: 5.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.8,
+          }}
+        />
+
+        {/* Tiny accent dots */}
+        <motion.div
+          className="absolute top-1/4 left-1/3 w-3 h-3 bg-primary/20 rounded-full"
+          animate={{
+            y: [0, -25, 0],
+            opacity: [0.3, 1, 0.3],
           }}
           transition={{
             duration: 4,
@@ -51,20 +159,64 @@ const Hero: React.FC = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-coral/20 rounded-full"
+          className="absolute top-2/3 right-1/3 w-2 h-2 bg-coral/25 rounded-full"
           animate={{
             y: [0, 30, 0],
-            opacity: [0.3, 0.8, 0.3],
+            opacity: [0.2, 0.8, 0.2],
           }}
           transition={{
-            duration: 5,
+            duration: 4.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 left-1/2 w-2.5 h-2.5 bg-purple/20 rounded-full"
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.3, 0.9, 0.3],
+          }}
+          transition={{
+            duration: 3.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+
+        {/* Floating ring shapes */}
+        <motion.div
+          className="absolute top-1/2 right-20 w-24 h-24 rounded-full border-2 border-teal/10"
+          style={{ filter: 'blur(2px)' }}
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.6, 0.3],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 left-32 w-20 h-20 rounded-full border-2 border-primary/10"
+          style={{ filter: 'blur(2px)' }}
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.2, 0.5, 0.2],
+            rotate: [360, 180, 0],
+          }}
+          transition={{
+            duration: 7,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 1,
           }}
         />
 
-        {/* Grid pattern overlay */}
+        {/* Ultra-subtle grid pattern overlay */}
         <div 
           className="absolute inset-0 opacity-[0.015]"
           style={{

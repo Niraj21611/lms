@@ -24,6 +24,7 @@
 .DS_Store
 *.pem
 AGENTS.md
+FLOATING_SHAPES_GUIDE.md
 
 # debug
 npm-debug.log*
