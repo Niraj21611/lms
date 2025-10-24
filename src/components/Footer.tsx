@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white relative overflow-hidden">
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/10 to-purple/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-to-br from-teal/10 to-coral/10 rounded-full blur-3xl" />
+    <footer className="bg-linear-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white relative overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-linear-to-br from-primary/10 to-purple/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-linear-to-br from-teal/10 to-coral/10 rounded-full blur-3xl" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -19,7 +19,7 @@ const Footer = () => {
             transition={{ delay: 0.1 }}
           >
             <div className="mb-4">
-              <div className="text-2xl font-display font-bold bg-gradient-to-r from-primary via-teal to-purple bg-clip-text text-transparent">
+              <div className="text-2xl font-display font-bold bg-linear-to-r from-primary via-teal to-purple bg-clip-text text-transparent">
                 LMS
               </div>
             </div>
@@ -28,19 +28,19 @@ const Footer = () => {
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-gradient-to-br from-primary/20 to-teal/20 rounded-lg">
+                <div className="p-2 bg-linear-to-br from-primary/20 to-teal/20 rounded-lg">
                   <Phone className="h-4 w-4 text-primary" strokeWidth={1.5} />
                 </div>
                 <span className="text-neutral-400 text-sm group-hover:text-white transition-colors">+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-gradient-to-br from-purple/20 to-coral/20 rounded-lg">
+                <div className="p-2 bg-linear-to-br from-purple/20 to-coral/20 rounded-lg">
                   <Mail className="h-4 w-4 text-purple" strokeWidth={1.5} />
                 </div>
                 <span className="text-neutral-400 text-sm group-hover:text-white transition-colors">support@example.com</span>
               </div>
               <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-gradient-to-br from-teal/20 to-primary/20 rounded-lg">
+                <div className="p-2 bg-linear-to-br from-teal/20 to-primary/20 rounded-lg">
                   <MapPin className="h-4 w-4 text-teal" strokeWidth={1.5} />
                 </div>
                 <span className="text-neutral-400 text-sm group-hover:text-white transition-colors">123 Business Avenue</span>
@@ -117,7 +117,7 @@ const Footer = () => {
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-primary to-primary-light hover:shadow-lg hover:shadow-primary/50 text-white font-medium py-3 px-4 rounded-xl transition-all duration-300 text-sm"
+                className="w-full bg-linear-to-r from-primary to-primary-light hover:shadow-lg hover:shadow-primary/50 text-white font-medium py-3 px-4 rounded-xl transition-all duration-300 text-sm"
               >
                 Subscribe
               </motion.button>
@@ -138,7 +138,7 @@ const Footer = () => {
                 <motion.div key={index} whileHover={{ scale: 1.1, y: -2 }}>
                   <Link
                     href={href}
-                    className={`p-2.5 bg-gradient-to-br ${gradient} rounded-xl text-white hover:shadow-lg transition-all duration-200 inline-block`}
+                    className={`p-2.5 bg-linear-to-br ${gradient} rounded-xl text-white hover:shadow-lg transition-all duration-200 inline-block`}
                   >
                     <Icon className="h-4 w-4" strokeWidth={1.5} />
                   </Link>

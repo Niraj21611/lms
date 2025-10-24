@@ -3,12 +3,44 @@
 import React from "react";
 import { ArrowRight, Play, BookOpen, Users, Award } from "lucide-react";
 import { motion } from "framer-motion";
+import JourneyAnimation from "./Animations/JourneyAnimation";
 
 const Hero: React.FC = () => {
   return (
-    <div className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-teal-50 min-h-screen flex items-center px-4 py-16 overflow-hidden">
+    <div className="relative bg-linear-to-br from-slate-50 via-blue-50 to-teal-50 min-h-screen flex items-center px-4 py-16 overflow-hidden">
+      {/* Animated Dotted Grid Background */}
+      <div className="absolute inset-0 opacity-40">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern
+              id="dot-pattern-hero"
+              x="0"
+              y="0"
+              width="30"
+              height="30"
+              patternUnits="userSpaceOnUse"
+            >
+              <motion.circle
+                cx="2"
+                cy="2"
+                r="1.5"
+                fill="#14b8a6"
+                initial={{ opacity: 1.0 }}
+                animate={{ opacity: [0.5, 1.0, 0.5] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dot-pattern-hero)" />
+        </svg>
+      </div>
+
       {/* Decorative elements */}
-      <div className="absolute top-30 right-1/4 w-32 h-32 border-4 border-orange-300/30 rounded-full" />
+      {/* <div className="absolute top-30 right-1/4 w-32 h-32 border-4 border-orange-300/30 rounded-full" /> */}
       <div className="absolute bottom-25 left-1/4 w-24 h-24">
         <svg viewBox="0 0 100 100" className="text-teal-400/30">
           <path
@@ -80,7 +112,7 @@ const Hero: React.FC = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center shadow-lg">
+                <div className="w-8 h-8 rounded-full bg-linear-to-br from-orange-400 to-orange-500 flex items-center justify-center shadow-lg">
                   <Play className="w-3 h-3 text-white ml-0.5" fill="white" />
                 </div>
                 <span>Video Play</span>
@@ -121,69 +153,7 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Image Card */}
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="relative">
-              {/* Background card with pattern */}
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-600 to-teal-700 rounded-3xl transform rotate-3"></div>
-
-              {/* Main image card */}
-              <div className="relative bg-gradient-to-br from-orange-100 to-pink-100 rounded-3xl overflow-hidden shadow-2xl">
-                <div
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.3) 10px, rgba(255,255,255,0.3) 20px)",
-                  }}
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop"
-                  alt="Student learning"
-                  className="relative w-full h-[450px] object-cover object-top mix-blend-multiply opacity-90"
-                />
-              </div>
-
-              {/* Decorative cloud */}
-              <div className="absolute top-8 right-8">
-                <svg
-                  width="80"
-                  height="60"
-                  viewBox="0 0 80 60"
-                  className="text-white/40"
-                >
-                  <path
-                    d="M60,30 Q65,20 70,25 Q75,20 75,30 Q80,30 80,40 Q75,50 65,50 L25,50 Q15,50 10,40 Q10,30 20,25 Q20,20 30,20 Q35,15 40,20 Q45,15 50,20 Q55,25 60,30 Z"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </div>
-
-              {/* Decorative squiggle */}
-              <div className="absolute bottom-20 -left-8">
-                <svg
-                  width="100"
-                  height="100"
-                  viewBox="0 0 100 100"
-                  className="text-orange-400"
-                >
-                  <path
-                    d="M20,50 Q30,30 40,50 T60,50 T80,50"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-            </div>
-          </motion.div>
+          <JourneyAnimation />
         </div>
       </div>
     </div>

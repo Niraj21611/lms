@@ -129,7 +129,7 @@ const PopularCourses = () => {
 
               {/* Course Info */}
               <div className="p-3">
-                <h3 className="text-base font-bold text-slate-900 mb-1 line-clamp-2 min-h-[3rem]">
+                <h3 className="text-base font-bold text-slate-900 mb-1 line-clamp-2 min-h-12">
                   {course.title}
                 </h3>
                 <p className="text-xs text-slate-600 mb-2">
