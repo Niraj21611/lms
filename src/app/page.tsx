@@ -1,5 +1,6 @@
 import BusinessSection from "@/components/BusinessSection";
 import CommunicateSection from "@/components/CommunicateSection";
+import PopularCourses from "@/components/Courses";
 import ExternalTeacherSection from "@/components/ExternalTeacherSection";
 import FeaturedInSection from "@/components/FeaturedInSection";
 import Features from "@/components/Features";
@@ -15,6 +16,7 @@ export default function Home() {
     <div>
       <Navbar/>
       <Hero/>
+      <PopularCourses/>
       <Features/>
       <KnowledgeDeliverySection/>
       <MonetizeSection/>
