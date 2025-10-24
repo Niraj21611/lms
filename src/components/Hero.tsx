@@ -1,29 +1,14 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Play, BookOpen, Users, Award } from "lucide-react";
+import { Check, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Hero: React.FC = () => {
   return (
-    <div className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-teal-50 min-h-screen flex items-center px-4 py-16 overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-30 right-1/4 w-32 h-32 border-4 border-orange-300/30 rounded-full" />
-      <div className="absolute bottom-25 left-1/4 w-24 h-24">
-        <svg viewBox="0 0 100 100" className="text-teal-400/30">
-          <path
-            d="M20,50 Q30,20 50,30 T80,50"
-            stroke="currentColor"
-            strokeWidth="3"
-            fill="none"
-            strokeLinecap="round"
-          />
-        </svg>
-      </div>
-      <div className="absolute top-45 left-20 w-20 h-20 bg-orange-200/20 rounded-lg rotate-12" />
-
+    <div className="relative bg-black min-h-screen flex items-center px-4 py-24 overflow-hidden">
       {/* Main Container */}
-      <div className="max-w-7xl mx-auto relative z-10 w-full pt-16">
+      <div className="max-w-7xl mx-auto relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -31,157 +16,184 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
+            {/* Rating Badge */}
+            <motion.div
+              className="flex items-center gap-2 mb-6"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="flex gap-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <div key={star} className="w-4 h-4 bg-teal-400 rounded-sm" />
+                ))}
+              </div>
+              <span className="text-sm text-white font-medium tracking-wide">
+                4.9 Rating - 10,000+ Reviews
+              </span>
+            </motion.div>
+
             {/* Main Headline */}
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-teal-900 leading-[1.1] mb-5"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              Build Your Skills
-              <br />
-              on the{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 text-teal-900">Best</span>
-                <span className="absolute inset-x-0 bottom-2 h-3 bg-orange-300/60 -rotate-1"></span>
-              </span>
-              <br />
-              <span className="text-teal-700">Platform</span>
-            </motion.h1>
-
-            {/* Subheading */}
-            <motion.p
-              className="text-base text-slate-600 leading-relaxed mb-6 max-w-xl"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-8 tracking-tight"
+              style={{
+                fontFamily:
+                  "'Inter', 'SF Pro Display', -apple-system, sans-serif",
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              Find Unlimited Courses That Match Your Needs to Hasten the Process
-              of Developing Your Skills
-            </motion.p>
+              Master New Skills
+              <br />
+              At Your Own
+              <br />
+              Pace
+            </motion.h1>
 
-            {/* CTA Buttons */}
+            {/* Feature List */}
             <motion.div
-              className="flex flex-wrap items-center gap-3 mb-6"
+              className="space-y-4 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
             >
-              <motion.button
-                className="group px-6 py-3 bg-teal-700 hover:bg-teal-800 text-white rounded-lg font-semibold text-sm flex items-center gap-2 transition-all duration-300 shadow-lg shadow-teal-700/20"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Get Started
-              </motion.button>
-
-              <motion.button
-                className="group px-5 py-3 bg-white hover:bg-orange-50 text-slate-700 rounded-lg font-semibold text-sm flex items-center gap-2 transition-all duration-300 shadow-md"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center shadow-lg">
-                  <Play className="w-3 h-3 text-white ml-0.5" fill="white" />
-                </div>
-                <span>Video Play</span>
-              </motion.button>
+              {[
+                "Expert-led courses designed by industry professionals",
+                "Flexible learning paths tailored to your career goals",
+                "Live support and mentorship included, accessible 24/7",
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                >
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-white flex items-center justify-center mt-0.5">
+                    <Check className="w-3 h-3 text-black" strokeWidth={3} />
+                  </div>
+                  <p
+                    className="text-white text-base leading-relaxed"
+                    style={{ fontFamily: "'Inter', -apple-system, sans-serif" }}
+                  >
+                    {feature}
+                  </p>
+                </motion.div>
+              ))}
             </motion.div>
 
-            {/* User Stats */}
+            {/* CTA Buttons */}
             <motion.div
-              className="flex items-center gap-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
+              className="flex flex-wrap items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.7 }}
             >
-              <div className="flex -space-x-3">
-                {[
-                  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-                  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
-                  "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop",
-                ].map((url, index) => (
-                  <motion.img
-                    key={index}
-                    src={url}
-                    alt={`Student ${index + 1}`}
-                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-md"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1, duration: 0.4 }}
-                  />
-                ))}
-              </div>
-              <div>
-                <p className="text-base font-bold text-teal-900">
-                  10,00+ Active
-                </p>
-                <p className="text-xs text-slate-600">Student</p>
-              </div>
+              <motion.button
+                className="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold text-sm transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Learning
+              </motion.button>
+
+              <motion.button
+                className="px-6 py-2.5 bg-transparent hover:bg-white/10 text-white rounded-lg font-semibold text-sm border-2 border-white transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explore Courses
+              </motion.button>
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Image Card */}
+          {/* Right Content - Image Grid */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="relative">
-              {/* Background card with pattern */}
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-600 to-teal-700 rounded-3xl transform rotate-3"></div>
-
-              {/* Main image card */}
-              <div className="relative bg-gradient-to-br from-orange-100 to-pink-100 rounded-3xl overflow-hidden shadow-2xl">
-                <div
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.3) 10px, rgba(255,255,255,0.3) 20px)",
-                  }}
-                />
+            <div className="grid grid-cols-2 gap-4">
+              {/* Top Left - Product Image */}
+              <motion.div
+                className="bg-neutral-700 rounded-3xl overflow-hidden shadow-xl aspect-square"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop"
-                  alt="Student learning"
-                  className="relative w-full h-[450px] object-cover object-top mix-blend-multiply opacity-90"
+                  src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop"
+                  alt="Product"
+                  className="w-full h-full object-cover"
                 />
-              </div>
+              </motion.div>
 
-              {/* Decorative cloud */}
-              <div className="absolute top-8 right-8">
-                <svg
-                  width="80"
-                  height="60"
-                  viewBox="0 0 80 60"
-                  className="text-white/40"
-                >
-                  <path
-                    d="M60,30 Q65,20 70,25 Q75,20 75,30 Q80,30 80,40 Q75,50 65,50 L25,50 Q15,50 10,40 Q10,30 20,25 Q20,20 30,20 Q35,15 40,20 Q45,15 50,20 Q55,25 60,30 Z"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </div>
+              {/* Top Right - Main Person */}
+              <motion.div
+                className="row-span-2 bg-blue-100 rounded-3xl overflow-hidden shadow-xl relative"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&h=600&fit=crop"
+                  alt="Happy student"
+                  className="w-full h-full object-cover"
+                />
 
-              {/* Decorative squiggle */}
-              <div className="absolute bottom-20 -left-8">
-                <svg
-                  width="100"
-                  height="100"
-                  viewBox="0 0 100 100"
-                  className="text-orange-400"
+                {/* Stats Card Overlay */}
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 bg-white rounded-2xl p-4 shadow-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.9 }}
                 >
-                  <path
-                    d="M20,50 Q30,30 40,50 T60,50 T80,50"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="flex -space-x-2">
+                      {[
+                        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+                        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+                        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
+                      ].map((url, index) => (
+                        <img
+                          key={index}
+                          src={url}
+                          alt={`User ${index + 1}`}
+                          className="w-7 h-7 rounded-full border-2 border-white object-cover"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <p
+                    className="text-2xl font-bold text-slate-900"
+                    style={{ fontFamily: "'Inter', -apple-system, sans-serif" }}
+                  >
+                    100k +
+                  </p>
+                  <p
+                    className="text-xs text-slate-600"
+                    style={{ fontFamily: "'Inter', -apple-system, sans-serif" }}
+                  >
+                    Active Learners
+                  </p>
+                </motion.div>
+              </motion.div>
+
+              {/* Bottom Left - Person */}
+              <motion.div
+                className="bg-yellow-100 rounded-3xl overflow-hidden shadow-xl aspect-square"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+                  alt="Student"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
             </div>
           </motion.div>
         </div>
