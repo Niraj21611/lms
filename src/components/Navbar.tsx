@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
               {" "}
               {/* adjust width/height as needed */}
               <Image
-                src="/logo.svg" // Your logo path
+                src="/logo-1.svg" // Your logo path
                 alt="Raah Academy"
                 fill
                 className="object-contain"

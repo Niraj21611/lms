@@ -15,11 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Raah Academy",
   description: "Raah Academy - Your journey to success starts here",
-  icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
-  },
-  themeColor: "#2E7D32",
 };
 
 export default function RootLayout({
@@ -41,4 +36,3 @@ export default function RootLayout({
     </html>
   );
 }
-
