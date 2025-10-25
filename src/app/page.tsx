@@ -1,31 +1,13 @@
-import dynamic from "next/dynamic";
-
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const PopularCourses = dynamic(() => import("@/components/Courses"), {
-  ssr: false,
-});
-const Features = dynamic(() => import("@/components/Features"), { ssr: false });
-const KnowledgeDeliverySection = dynamic(
-  () => import("@/components/KnowledgeDeliverySection"),
-  { ssr: false }
-);
-const MonetizeSection = dynamic(() => import("@/components/MonetizeSection"), {
-  ssr: false,
-});
-const CommunicateSection = dynamic(
-  () => import("@/components/CommunicateSection"),
-  { ssr: false }
-);
-const ExternalTeacherSection = dynamic(
-  () => import("@/components/ExternalTeacherSection"),
-  { ssr: false }
-);
-const UpscaleHero = dynamic(() => import("@/components/UpscaleHero"), {
-  ssr: false,
-});
+import PopularCourses from "@/components/Courses";
+import Features from "@/components/Features";
+import KnowledgeDeliverySection from "@/components/KnowledgeDeliverySection";
+import MonetizeSection from "@/components/MonetizeSection";
+import CommunicateSection from "@/components/CommunicateSection";
+import ExternalTeacherSection from "@/components/ExternalTeacherSection";
+import UpscaleHero from "@/components/UpscaleHero";
 
 export default function Home() {
   return (
