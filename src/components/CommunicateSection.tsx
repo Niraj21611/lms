@@ -1,17 +1,14 @@
 "use client";
 
 import {
-  BarChart,
   Brain,
   Target,
-  Users,
   Zap,
   Star,
   Award,
   TrendingUp,
   Sparkles,
 } from "lucide-react";
-import Image from "next/image";
 import { Variants, motion } from "framer-motion";
 import { Player } from "@lottiefiles/react-lottie-player";
 

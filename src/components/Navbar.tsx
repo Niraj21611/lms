@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* ✅ Updated Logo Section */}
           {/* ✅ Fixed Logo Section (aligned left, not centered) */}
-          <div className="flex-shrink-0 flex items-center">
+          <div className="shrink-0 flex items-center">
             <div className="relative w-60 h-60">
               {" "}
               {/* adjust width/height as needed */}
@@ -66,11 +66,11 @@ const Navbar: React.FC = () => {
                 transition={{ delay: index * 0.1 }}
               >
                 {item.name}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-coral group-hover:w-3/4 transition-all duration-300" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-primary to-coral group-hover:w-3/4 transition-all duration-300" />
               </motion.a>
             ))}
             <motion.button
-              className="ml-4 px-6 py-2.5 bg-gradient-to-r from-primary to-primary-light hover:shadow-lg hover:shadow-primary/30 text-white rounded-xl text-sm font-semibold transition-all duration-300 transform hover:scale-105"
+              className="ml-4 px-6 py-2.5 bg-linear-to-r from-primary to-primary-light hover:shadow-lg hover:shadow-primary/30 text-white rounded-xl text-sm font-semibold transition-all duration-300 transform hover:scale-105"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -111,7 +111,7 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </a>
               ))}
-              <button className="w-full bg-gradient-to-r from-primary to-primary-light text-white px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 mt-4 shadow-md hover:shadow-lg">
+              <button className="w-full bg-linear-to-r from-primary to-primary-light text-white px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 mt-4 shadow-md hover:shadow-lg">
                 Sign In
               </button>
             </div>

@@ -257,7 +257,7 @@ const UpscaleHero: React.FC = () => {
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl text-slate-900 font-bold leading-tight tracking-tight">
             <span className="relative inline-block">
-              <span className="relative z-10 bg-gradient-to-r from-teal-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="relative z-10 bg-linear-to-r from-teal-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
                 Transform Learning,
               </span>
               <motion.span 
@@ -315,7 +315,7 @@ const UpscaleHero: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + idx * 0.1, duration: 0.4 }}
               >
-                <div className={`text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+                <div className={`text-3xl font-bold bg-linear-to-r ${stat.color} bg-clip-text text-transparent`}>
                   {stat.value}
                 </div>
                 <div className="text-sm text-slate-600 mt-1 font-medium">{stat.label}</div>

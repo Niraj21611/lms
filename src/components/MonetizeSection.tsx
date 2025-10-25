@@ -1,7 +1,6 @@
 "use client";
 
-import { Globe, Smartphone, Star, Award, BookOpen } from "lucide-react";
-import Image from "next/image";
+import { Star, Award, BookOpen } from "lucide-react";
 import { Variants, motion } from "framer-motion";
 import { Player } from "@lottiefiles/react-lottie-player";
 
@@ -252,7 +251,7 @@ const MonetizeSection: React.FC = () => {
             variants={fadeInUp}
           >
             Foster confidence, develop skills, and deliver a personalized
-            learning experience designed for success in India's competitive
+            learning experience designed for success in India&apos;s competitive
             education landscape.
           </motion.p>
 

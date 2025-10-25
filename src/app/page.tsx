@@ -1,31 +1,36 @@
-import BusinessSection from "@/components/BusinessSection";
-import CommunicateSection from "@/components/CommunicateSection";
-import PopularCourses from "@/components/Courses";
-import ExternalTeacherSection from "@/components/ExternalTeacherSection";
-import FeaturedInSection from "@/components/FeaturedInSection";
-import Features from "@/components/Features";
-import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
+
 import Hero from "@/components/Hero";
-import KnowledgeDeliverySection from "@/components/KnowledgeDeliverySection";
-import MonetizeSection from "@/components/MonetizeSection";
 import Navbar from "@/components/Navbar";
-import UpscaleHero from "@/components/UpscaleHero";
+import Footer from "@/components/Footer";
+
+const PopularCourses = dynamic(() => import("@/components/Courses"));
+const Features = dynamic(() => import("@/components/Features"));
+const KnowledgeDeliverySection = dynamic(
+  () => import("@/components/KnowledgeDeliverySection")
+);
+const MonetizeSection = dynamic(() => import("@/components/MonetizeSection"));
+const CommunicateSection = dynamic(
+  () => import("@/components/CommunicateSection")
+);
+const ExternalTeacherSection = dynamic(
+  () => import("@/components/ExternalTeacherSection")
+);
+const UpscaleHero = dynamic(() => import("@/components/UpscaleHero"));
 
 export default function Home() {
   return (
     <div>
-      <Navbar/>
-      <Hero/>
-      <PopularCourses/>
-      <Features/>
-      <KnowledgeDeliverySection/>
-      <MonetizeSection/>
-      <CommunicateSection/>
-      {/* <BusinessSection/> */}
+      <Navbar />
+      <Hero />
+      <PopularCourses />
+      <Features />
+      <KnowledgeDeliverySection />
+      <MonetizeSection />
+      <CommunicateSection />
       <ExternalTeacherSection />
-      {/* <FeaturedInSection /> */}
       <UpscaleHero />
       <Footer />
-    </div> 
+    </div>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Play, BookOpen, Users, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import JourneyAnimation from "./Animations/JourneyAnimation";
+import { Play } from "lucide-react";
 
 const Hero: React.FC = () => {
   return (

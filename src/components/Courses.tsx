@@ -3,13 +3,32 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Users, Sparkles, TrendingUp, Award } from "lucide-react";
+import Image from "next/image";
+
+type Category = "Development" | "Business" | "Design" | "Marketing";
+
+interface Course {
+  id: number;
+  title: string;
+  instructor: string;
+  price: number;
+  originalPrice: number;
+  rating: number;
+  students: number;
+  image: string;
+  category: Category;
+  bestseller: boolean;
+}
 
 const PopularCourses = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = ["All", "Development", "Business", "Design", "Marketing"];
 
-  const categoryColors = {
+  const categoryColors: Record<
+    Category,
+    { bg: string; border: string; text: string; accent: string }
+  > = {
     Development: {
       bg: "bg-teal-100",
       border: "border-teal-300",
@@ -35,13 +54,12 @@ const PopularCourses = () => {
       accent: "bg-orange-500",
     },
   };
-
-  const courses = [
+  const courses: Course[] = [
     {
       id: 1,
       title: "Complete Web Development Bootcamp 2024",
       instructor: "Fatema fiha",
-      price:1300,
+      price: 1300,
       originalPrice: 2000,
       rating: 4.7,
       students: 25145,
@@ -446,10 +464,13 @@ const PopularCourses = () => {
               >
                 {/* Course Image */}
                 <div className="relative h-40 overflow-hidden">
-                  <img
+                  <Image
                     src={course.image}
                     alt={course.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   {/* Category Badge */}
                   <div

@@ -2,17 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Users,
-  Award,
-  Globe,
-  ArrowRight,
-  BookOpen,
-  Star,
-  Sparkles,
-  Heart,
-  Zap,
-} from "lucide-react";
+import { Users, ArrowRight, Star, Sparkles } from "lucide-react";
 
 const ExternalTeacherSection: React.FC = () => {
   return (
@@ -248,10 +238,9 @@ const ExternalTeacherSection: React.FC = () => {
           </motion.p>
         </div>
 
-
         {/* CTA Section */}
         <motion.div
-          className="relative bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl p-12 md:p-16 text-center overflow-hidden shadow-2xl"
+          className="relative bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl p-12 md:p-16 text-center overflow-hidden shadow-2xl"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -308,7 +297,7 @@ const ExternalTeacherSection: React.FC = () => {
               transition={{ delay: 0.7, duration: 0.6 }}
             >
               Join our community of expert educators and start making a
-              difference in students' lives today.
+              difference in students&apos; lives today.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"

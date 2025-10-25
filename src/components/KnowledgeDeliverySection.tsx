@@ -1,7 +1,6 @@
 "use client";
 
 import { Trophy, Users, TrendingUp, Sparkles, Star, Zap } from "lucide-react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Player } from "@lottiefiles/react-lottie-player";
 
