@@ -63,8 +63,8 @@ const Features: React.FC = () => {
                 cy="2"
                 r="1.5"
                 fill="#14b8a6"
-                initial={{ opacity: 0.2 }}
-                animate={{ opacity: [0.2, 0.6, 0.2] }}
+                initial={{ opacity: 1.0 }}
+                animate={{ opacity: [0.5, 1.0, 0.5] }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,

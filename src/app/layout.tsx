@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Raah Academy",
   description: "Raah Academy - Your journey to success starts here",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  themeColor: "#2E7D32",
 };
 
 export default function RootLayout({
@@ -24,6 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="theme-color" content="#2E7D32" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -32,3 +41,4 @@ export default function RootLayout({
     </html>
   );
 }
+

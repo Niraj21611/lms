@@ -70,15 +70,15 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              Build Your Skills
+              The Feature of
               <br />
-              on the{" "}
+              Learning{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-teal-900">Best</span>
+                <span className="relative z-10 text-teal-900">Starts</span>
                 <span className="absolute inset-x-0 bottom-2 h-3 bg-orange-300/60 -rotate-1"></span>
               </span>
               <br />
-              <span className="text-teal-700">Platform</span>
+              <span className="text-teal-700">Here</span>
             </motion.h1>
 
             {/* Subheading */}
@@ -88,8 +88,8 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              Find Unlimited Courses That Match Your Needs to Hasten the Process
-              of Developing Your Skills
+              Unlock endless opportunities to learn, upskill, and grow — all
+              powered by Raah Academy.
             </motion.p>
 
             {/* CTA Buttons */}
