@@ -112,7 +112,7 @@ const Hero: React.FC = () => {
               >
                 <div>
                   <p className="text-4xl font-bold text-slate-900 mb-2">56+</p>
-                  <p className="text-sm text-slate-600 mb-4">Currencies</p>
+                  <p className="text-sm text-slate-600 mb-4">Domains</p>
                 </div>
                 <div className="flex justify-center">
                   <div className="w-20 h-20 rounded-full border-2 border-slate-400 flex items-center justify-center">

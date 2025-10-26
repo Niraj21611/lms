@@ -1,9 +1,9 @@
 "use client";
 
 import { Globe, Smartphone, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,

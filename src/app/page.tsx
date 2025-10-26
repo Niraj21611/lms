@@ -21,9 +21,9 @@ export default function Home() {
       <KnowledgeDeliverySection/>
       <MonetizeSection/>
       <CommunicateSection/>
-      <BusinessSection/>
+      {/* <BusinessSection/> */}
       <ExternalTeacherSection />
-      <FeaturedInSection />
+      {/* <FeaturedInSection /> */}
       <UpscaleHero />
       <Footer />
     </div> 
