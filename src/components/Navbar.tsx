@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.2 }}
           >
             <span className="text-neutral-900 font-light text-2xl tracking-tight">
-              LMS
+              Learnsphere
             </span>
           </motion.div>
 
