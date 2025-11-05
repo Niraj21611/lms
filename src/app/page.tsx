@@ -7,23 +7,22 @@ import PopularCourses from "@/components/Courses";
 import Features from "@/components/Features";
 import KnowledgeDeliverySection from "@/components/KnowledgeDeliverySection";
 import MonetizeSection from "@/components/MonetizeSection";
-import CommunicateSection from "@/components/CommunicateSection";
-import ExternalTeacherSection from "@/components/ExternalTeacherSection";
+import Navbar from "@/components/Navbar";
 import UpscaleHero from "@/components/UpscaleHero";
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <PopularCourses />
-      <Features />
-      <KnowledgeDeliverySection />
-      <MonetizeSection />
-      <CommunicateSection />
+    <>
+      <Hero/>
+      <PopularCourses/>
+      <Features/>
+      <KnowledgeDeliverySection/>
+      <MonetizeSection/>
+      <CommunicateSection/>
+      {/* <BusinessSection/> */}
       <ExternalTeacherSection />
       <UpscaleHero />
       <Footer />
-    </div>
+    </div> 
   );
 }

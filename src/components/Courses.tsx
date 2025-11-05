@@ -1,144 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Star, Users, Sparkles, TrendingUp, Award } from "lucide-react";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { Variants, motion } from "framer-motion";
+import { Award, Sparkles, Star, TrendingUp } from "lucide-react";
 
-type Category = "Development" | "Business" | "Design" | "Marketing";
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 interface Course {
-  id: number;
-  title: string;
-  instructor: string;
-  price: number;
-  originalPrice: number;
-  rating: number;
-  students: number;
-  image: string;
-  category: Category;
-  bestseller: boolean;
+  image: string | null;
+  courseName: string;
+  instructorName: string;
+  subscription: {
+    price: number;
+    planType: "ANNUAL" | "ONE_TIME" | "MONTHLY";
+  } | null;
 }
 
 const PopularCourses = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const categories = ["All", "Development", "Business", "Design", "Marketing"];
-
-  const categoryColors: Record<
-    Category,
-    { bg: string; border: string; text: string; accent: string }
-  > = {
-    Development: {
-      bg: "bg-teal-100",
-      border: "border-teal-300",
-      text: "text-teal-700",
-      accent: "bg-teal-500",
-    },
-    Business: {
-      bg: "bg-purple-100",
-      border: "border-purple-300",
-      text: "text-purple-700",
-      accent: "bg-purple-500",
-    },
-    Design: {
-      bg: "bg-pink-100",
-      border: "border-pink-300",
-      text: "text-pink-700",
-      accent: "bg-pink-500",
-    },
-    Marketing: {
-      bg: "bg-orange-100",
-      border: "border-orange-300",
-      text: "text-orange-700",
-      accent: "bg-orange-500",
-    },
-  };
-  const courses: Course[] = [
-    {
-      id: 1,
-      title: "Complete Web Development Bootcamp 2024",
-      instructor: "Fatema fiha",
-      price: 1300,
-      originalPrice: 2000,
-      rating: 4.7,
-      students: 25145,
-      image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop",
-      category: "Development",
-      bestseller: true,
-    },
-    {
-      id: 2,
-      title: "Financial Analysis & Investment Management",
-      instructor: "Leonel money",
-      price: 4000,
-      originalPrice: 5000,
-      rating: 4.5,
-      students: 18230,
-      image:
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=300&fit=crop",
-      category: "Business",
-      bestseller: false,
-    },
-    {
-      id: 3,
-      title: "UI/UX Design Fundamentals with Figma",
-      instructor: "Abrar islam",
-      price: 2500,
-      originalPrice: 3000,
-      rating: 4.8,
-      students: 32456,
-      image:
-        "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop",
-      category: "Design",
-      bestseller: true,
-    },
-    {
-      id: 4,
-      title: "Python Programming Masterclass",
-      instructor: "Sarah Johnson",
-      price: 1200,
-      originalPrice: 1800,
-      rating: 4.6,
-      students: 45678,
-      image:
-        "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=300&fit=crop",
-      category: "Development",
-      bestseller: true,
-    },
-    {
-      id: 5,
-      title: "Digital Marketing Complete Course",
-      instructor: "Michael Chen",
-      price: 1000,
-      originalPrice: 2000,
-      rating: 4.4,
-      students: 19876,
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
-      category: "Marketing",
-      bestseller: false,
-    },
-    {
-      id: 6,
-      title: "Business Strategy & Leadership",
-      instructor: "Emma Watson",
-      price: 5000,
-      originalPrice: 6500,
-      rating: 4.7,
-      students: 28934,
-      image:
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop",
-      category: "Business",
-      bestseller: true,
-    },
-  ];
-
-  const filteredCourses =
-    activeCategory === "All"
-      ? courses
-      : courses.filter((course) => course.category === activeCategory);
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const res = await fetch("/api/courses", { method: "GET" });
+        const data = await res.json();
+        if (data.success) {
+          setCourses(data.courses);
+        }
+      } catch (error) {
+        console.error("Failed to fetch courses:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCourses();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white py-16 px-4 relative overflow-hidden">
@@ -395,177 +299,89 @@ const PopularCourses = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
-        <div className="mb-12 text-center">
+        <motion.div
+          className="mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          <span className="uppercase font-medium text-sm tracking-widest text-neutral-500 mb-4 block">
+            Our Courses
+          </span>
+          <h1 className="text-4xl md:text-5xl font-light text-neutral-900 mb-8 tracking-tight">
+            Popular Courses
+          </h1>
+        </motion.div>
+
+        {/* Loading State */}
+        {loading ? (
+          <div className="text-center py-20 text-neutral-600">Loading...</div>
+        ) : courses.length === 0 ? (
+          <div className="text-center py-20">
+            <div className="inline-block p-12 bg-white border border-neutral-200">
+              <p className="text-neutral-600 text-base mb-6 font-light">
+                No courses available at the moment.
+              </p>
+            </div>
+          </div>
+        ) : (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            variants={fadeInUp}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-100 border-2 border-teal-300 text-sm font-semibold text-teal-700 mb-4">
-              <Award className="w-4 h-4" />
-              Top Rated
-            </span>
-          </motion.div>
-
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Popular{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-purple-700">courses</span>
-              <span className="absolute inset-x-0 bottom-1 h-3 bg-yellow-300/60 -rotate-1"></span>
-            </span>
-          </motion.h1>
-
-          {/* Category Navigation */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-3 mt-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 ${
-                  activeCategory === category
-                    ? "bg-slate-900 text-white shadow-lg scale-105"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Courses Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredCourses.map((course, index) => {
-            const colors = categoryColors[course.category];
-            return (
+            {courses.map((course, index) => (
               <motion.div
-                key={course.id}
-                className={`group bg-white border-2 ${colors.border} rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer`}
+                key={index}
+                className="bg-white border border-neutral-200 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -4 }}
               >
                 {/* Course Image */}
-                <div className="relative h-40 overflow-hidden">
-                  <Image
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    fill
-                    style={{ objectFit: "cover" }}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                <div className="relative h-48 overflow-hidden bg-neutral-100">
+                  <img
+                    src={
+                      course.image ||
+                      "https://via.placeholder.com/400x300?text=No+Image"
+                    }
+                    alt={course.courseName}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Category Badge */}
-                  <div
-                    className={`absolute top-3 left-3 px-3 py-1 ${colors.bg} ${colors.text} text-xs font-bold rounded-full`}
-                  >
-                    {course.category}
-                  </div>
-                  {/* Bestseller Badge */}
-                  {course.bestseller && (
-                    <div className="absolute top-3 right-3 px-3 py-1 bg-yellow-400 text-slate-900 text-xs font-bold rounded-full flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-slate-900" />
-                      Bestseller
-                    </div>
-                  )}
                 </div>
 
                 {/* Course Info */}
-                <div className="p-4 relative">
-                  {/* Decorative corner */}
-                  <div
-                    className={`absolute bottom-0 right-0 w-16 h-16 ${colors.bg} opacity-50 rounded-tl-full`}
-                  />
-
-                  <h3 className="text-base font-bold text-slate-900 mb-2 line-clamp-2 min-h-12 relative z-10">
-                    {course.title}
+                <div className="p-6">
+                  <h3 className="text-lg font-normal text-neutral-900 mb-2 line-clamp-2 min-h-[3.5rem] leading-relaxed">
+                    {course.courseName}
                   </h3>
-                  <p className="text-sm text-slate-600 mb-3 relative z-10">
-                    {course.instructor}
+                  <p className="text-sm text-neutral-600 mb-4 font-light">
+                    {course.instructorName}
                   </p>
 
-                  {/* Rating */}
-                  <div className="flex items-center gap-2 mb-3 relative z-10">
-                    <span className="text-sm font-bold text-slate-900">
-                      {course.rating}
-                    </span>
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-3.5 h-3.5 ${
-                            i < Math.floor(course.rating)
-                              ? "fill-yellow-400 text-yellow-400"
-                              : "text-slate-300"
-                          }`}
-                        />
-                      ))}
+                  {/* Price and Plan */}
+                  {course.subscription ? (
+                    <div className="flex items-center gap-3 pt-4 border-t border-neutral-200">
+                      <span className="text-xl font-light text-neutral-900">
+                        ₹{course.subscription.price}
+                      </span>
+                      <span className="text-sm text-neutral-500 font-light uppercase">
+                        / {course.subscription.planType.toLowerCase()}
+                      </span>
                     </div>
-                    <div className="flex items-center gap-1 text-xs text-slate-500">
-                      <Users className="w-3.5 h-3.5" />
-                      <span>{course.students.toLocaleString()}</span>
+                  ) : (
+                    <div className="pt-4 border-t border-neutral-200 text-neutral-500 text-sm">
+                      No active subscription
                     </div>
-                  </div>
-
-                  {/* Price */}
-                  <div className="flex items-center gap-2 relative z-10">
-                    <span className="text-xl font-bold text-slate-900">
-                      ₹{course.price}
-                    </span>
-                    <span className="text-sm text-slate-500 line-through">
-                      ₹{course.originalPrice}
-                    </span>
-                    <span
-                      className={`ml-auto px-2 py-1 ${colors.accent} text-white text-xs font-bold rounded`}
-                    >
-                      {Math.round(
-                        (1 - course.price / course.originalPrice) * 100
-                      )}
-                      % OFF
-                    </span>
-                  </div>
+                  )}
                 </div>
               </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Empty State */}
-        {filteredCourses.length === 0 && (
-          <motion.div
-            className="text-center py-20"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="inline-block p-8 bg-slate-50 rounded-2xl border-2 border-slate-200">
-              <p className="text-slate-600 text-lg mb-4">
-                No courses found in this category.
-              </p>
-              <button
-                onClick={() => setActiveCategory("All")}
-                className="px-6 py-3 text-sm font-semibold bg-slate-900 text-white hover:bg-slate-800 rounded-full transition-all duration-300 hover:scale-105"
-              >
-                View All Courses
-              </button>
-            </div>
+            ))}
           </motion.div>
         )}
       </div>
