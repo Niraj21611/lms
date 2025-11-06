@@ -4,10 +4,13 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,10 +22,9 @@ const Navbar: React.FC = () => {
 
   const navItems = [
     { name: "Home", href: "#" },
-    { name: "Courses", href: "#" },
+    { name: "Courses", href: "#courses" },
     { name: "Features", href: "#" },
-    { name: "Pricing", href: "#" },
-    { name: "About", href: "#" },
+    { name: "Blog", href: "/blog" },
   ];
 
   return (
@@ -40,7 +42,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* ✅ Updated Logo Section */}
           {/* ✅ Fixed Logo Section (aligned left, not centered) */}
-          <div className="shrink-0 flex items-center cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
+          <div className="shrink-0 flex items-center cursor-pointer" onClick={() => router.push("/")}>
             <div className="relative w-60 h-60">
               {" "}
               <Image
@@ -102,13 +104,13 @@ const Navbar: React.FC = () => {
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   className="text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 block px-3 py-2 text-base font-medium transition-colors duration-200 rounded-lg"
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <button className="w-full bg-linear-to-r from-primary to-primary-light text-white px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 mt-4 shadow-md hover:shadow-lg">
                 Sign In

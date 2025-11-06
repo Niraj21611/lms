@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Calendar, User, ArrowLeft, Star, Sparkles, Facebook, Twitter, Linkedin, Copy } from "lucide-react";
@@ -64,13 +66,9 @@ export default function BlogDetailPageClient({ blog }: BlogProps) {
           {/* Image */}
           {blog.photo && (
             <motion.div className="relative h-96 overflow-hidden bg-slate-100" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }}>
-              <Image src={blog.photo} alt={blog.title} className="w-full h-full object-cover" />
+              <Image src={blog.photo} alt={blog.title} fill className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              {blog.categoryId && (
-                <div className="absolute top-6 left-6 px-4 py-2 bg-yellow-400 text-slate-900 text-sm font-bold rounded-full shadow-lg">
-                  {blog.categoryId}
-                </div>
-              )}
+              
             </motion.div>
           )}
 
@@ -80,7 +78,7 @@ export default function BlogDetailPageClient({ blog }: BlogProps) {
             <motion.div className="flex flex-wrap items-center gap-4 mb-6 pb-6 border-b border-slate-200" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center border-2 border-white shadow-md">
-                  {blog.authorImage ? <Image src={blog.authorImage} alt={blog.authorName} className="w-full h-full rounded-full object-cover" /> : <User className="w-6 h-6 text-white" />}
+                  {blog.authorImage ? <Image src={blog.authorImage} fill alt={blog.authorName} className="w-full h-full rounded-full object-cover" /> : <User className="w-6 h-6 text-white" />}
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-slate-900">{blog.authorName}</p>

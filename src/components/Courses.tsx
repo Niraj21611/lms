@@ -71,7 +71,7 @@ const PopularCourses = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white py-20 px-4 relative overflow-hidden">
+    <div id="courses" className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white py-20 px-4 relative overflow-hidden">
       {/* Enhanced Decorative Elements */}
 
       {/* Floating Stars */}
