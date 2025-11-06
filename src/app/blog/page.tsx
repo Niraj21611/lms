@@ -14,6 +14,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 type Blog = {
   id: string | number;
@@ -41,6 +42,7 @@ const BlogPage = () => {
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();   
 
   useEffect(() => {
     let mounted = true;
@@ -276,6 +278,7 @@ const BlogPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -8, scale: 1.02 }}
+                  onClick={() => {router.push(`/blog/${post.slugUrl}`)}}
                 >
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden bg-slate-100">
@@ -289,7 +292,7 @@ const BlogPage = () => {
                       height={600}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                                      </div>
+                  </div>
 
                   {/* Content */}
                   <div className="p-5">
