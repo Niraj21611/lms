@@ -282,7 +282,7 @@ const BlogPage = () => {
                   <div className="relative h-48 overflow-hidden bg-slate-100">
                     <Image
                       src={
-                        post.photo ||
+                        `${process.env.NEXT_PUBLIC_API_URL}${post.photo}` ||
                         "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
                       }
                       alt={post.title}
@@ -290,14 +290,7 @@ const BlogPage = () => {
                       height={600}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    {/* Category Badge */}
-                    {post.categoryId && (
-                      <div className="absolute top-3 left-3 px-3 py-1 bg-yellow-400 text-slate-900 text-xs font-bold rounded-full flex items-center gap-1">
-                        <Tag className="w-3 h-3" />
-                        {post.categoryId}
-                      </div>
-                    )}
-                  </div>
+                                      </div>
 
                   {/* Content */}
                   <div className="p-5">
