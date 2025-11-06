@@ -14,6 +14,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import Image from "next/image";
 
 type Blog = {
   id: string | number;
@@ -28,7 +29,12 @@ type Blog = {
 
 type ApiResponse = {
   blogs: Blog[];
-  pagination: { page: number; pageCount: number; pageSize: number; total: number };
+  pagination: {
+    page: number;
+    pageCount: number;
+    pageSize: number;
+    total: number;
+  };
 };
 
 const BlogPage = () => {
@@ -47,6 +53,7 @@ const BlogPage = () => {
           `${process.env.NEXT_PUBLIC_API_URL}/api/blog?page=${page}`,
           { cache: "no-store" }
         );
+        console.log("Fetch response:", res);
         if (!res.ok) throw new Error("Failed to fetch blogs");
         const data: ApiResponse = await res.json();
         if (!mounted) return;
@@ -230,7 +237,8 @@ const BlogPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Explore articles on education, teaching strategies, and student success
+            Explore articles on education, teaching strategies, and student
+            success
           </motion.p>
         </div>
 
@@ -272,9 +280,14 @@ const BlogPage = () => {
                 >
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden bg-slate-100">
-                    <img
-                      src={post.photo || "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"}
+                    <Image
+                      src={
+                        post.photo ||
+                        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
+                      }
                       alt={post.title}
+                      width={800}
+                      height={600}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     {/* Category Badge */}
@@ -291,7 +304,9 @@ const BlogPage = () => {
                     {/* Date */}
                     <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">
                       <Calendar className="w-3.5 h-3.5 text-teal-600" />
-                      <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+                      <span>
+                        {new Date(post.createdAt).toLocaleDateString()}
+                      </span>
                     </div>
 
                     {/* Title */}
@@ -361,21 +376,23 @@ const BlogPage = () => {
 
                 {/* Page Numbers */}
                 <div className="flex gap-2">
-                  {Array.from({ length: pageCount }, (_, i) => i + 1).map((pageNum) => (
-                    <motion.button
-                      key={pageNum}
-                      onClick={() => handlePageChange(pageNum)}
-                      className={`w-10 h-10 rounded-lg border-2 font-semibold text-sm transition-all duration-300 ${
-                        page === pageNum
-                          ? "bg-teal-600 border-teal-600 text-white shadow-lg"
-                          : "border-slate-200 text-slate-700 hover:border-teal-300 hover:bg-teal-50"
-                      }`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {pageNum}
-                    </motion.button>
-                  ))}
+                  {Array.from({ length: pageCount }, (_, i) => i + 1).map(
+                    (pageNum) => (
+                      <motion.button
+                        key={pageNum}
+                        onClick={() => handlePageChange(pageNum)}
+                        className={`w-10 h-10 rounded-lg border-2 font-semibold text-sm transition-all duration-300 ${
+                          page === pageNum
+                            ? "bg-teal-600 border-teal-600 text-white shadow-lg"
+                            : "border-slate-200 text-slate-700 hover:border-teal-300 hover:bg-teal-50"
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {pageNum}
+                      </motion.button>
+                    )
+                  )}
                 </div>
 
                 {/* Next Button */}

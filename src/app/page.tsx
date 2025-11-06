@@ -1,7 +1,6 @@
 "use client"
 
 import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
 import PopularCourses from "@/components/Courses";
 import Features from "@/components/Features";
 import KnowledgeDeliverySection from "@/components/KnowledgeDeliverySection";
