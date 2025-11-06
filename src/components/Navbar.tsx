@@ -40,10 +40,9 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* ✅ Updated Logo Section */}
           {/* ✅ Fixed Logo Section (aligned left, not centered) */}
-          <div className="shrink-0 flex items-center">
+          <div className="shrink-0 flex items-center cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
             <div className="relative w-60 h-60">
               {" "}
-              {/* adjust width/height as needed */}
               <Image
                 src="/logo-1.svg" // Your logo path
                 alt="Raah Academy"
