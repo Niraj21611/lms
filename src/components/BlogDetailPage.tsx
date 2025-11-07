@@ -38,7 +38,7 @@ export default function BlogDetailPageClient({ blog }: BlogProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white relative overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-white relative overflow-hidden">
       {/* Decorative Elements */}
       <motion.div className="absolute top-20 right-1/4 text-yellow-400" animate={{ y: [0, -20, 0], rotate: [0, 180, 360], scale: [1, 1.2, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
         <Star className="w-8 h-8 fill-yellow-400 opacity-40" />
@@ -53,11 +53,19 @@ export default function BlogDetailPageClient({ blog }: BlogProps) {
       <motion.div className="absolute bottom-1/3 right-16 w-24 h-24 bg-purple-200/30 rounded-full" animate={{ y: [0, 20, 0], x: [0, 10, 0], scale: [1, 1.2, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
 
       <div className="max-w-4xl mx-auto px-4 py-12 relative z-10">
-        {/* Back Button */}
-        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="mb-8">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-teal-700 transition-colors">
+        {/* Back to Articles Button - Top */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <Link 
+            href="/blog" 
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-teal-50 text-slate-700 hover:text-teal-700 font-semibold rounded-xl border-2 border-slate-200 hover:border-teal-300 transition-all duration-300 shadow-sm hover:shadow-md"
+          >
             <ArrowLeft className="w-4 h-4" />
-            Back to Blog
+            Back to Articles
           </Link>
         </motion.div>
 
@@ -67,7 +75,7 @@ export default function BlogDetailPageClient({ blog }: BlogProps) {
           {blog.photo && (
             <motion.div className="relative h-96 overflow-hidden bg-slate-100" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }}>
               <Image src={blog.photo} alt={blog.title} fill className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               
             </motion.div>
           )}
@@ -77,7 +85,7 @@ export default function BlogDetailPageClient({ blog }: BlogProps) {
             {/* Meta */}
             <motion.div className="flex flex-wrap items-center gap-4 mb-6 pb-6 border-b border-slate-200" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center border-2 border-white shadow-md">
+                <div className="w-12 h-12 rounded-full bg-linear-to-br from-teal-400 to-blue-500 flex items-center justify-center border-2 border-white shadow-md">
                   {blog.authorImage ? <Image src={blog.authorImage} fill alt={blog.authorName} className="w-full h-full rounded-full object-cover" /> : <User className="w-6 h-6 text-white" />}
                 </div>
                 <div>

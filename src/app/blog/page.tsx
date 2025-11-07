@@ -83,10 +83,62 @@ const BlogPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden mt-10">
+    <div className="min-h-screen relative overflow-hidden mt-10">
+      {/* Vibrant Gradient Background */}
+      <div className="absolute inset-0 bg-linear-to-br from-teal-50 via-purple-50/50 to-yellow-50/60" />
+      
+      {/* Enhanced Mesh Gradient Overlay */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,var(--tw-gradient-stops))] from-teal-200/60 via-teal-100/30 to-transparent" />
+        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-purple-200/50 via-purple-100/25 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 w-full h-full bg-[radial-gradient(ellipse_at_bottom,var(--tw-gradient-stops))] from-yellow-200/40 via-yellow-100/20 to-transparent" />
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-pink-200/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-cyan-200/30 rounded-full blur-3xl" />
+      </div>
+
+      {/* Colorful Dots Pattern */}
+      <div 
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: `radial-gradient(circle, #e1e8ed 1px, transparent 1px)`,
+          backgroundSize: '24px 24px'
+        }}
+      />
+      
+      {/* Animated Gradient Orbs */}
+      <motion.div
+        className="absolute top-1/4 left-1/3 w-72 h-72 bg-linear-to-br from-teal-300/40 to-cyan-300/40 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+          x: [0, 30, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-linear-to-br from-purple-300/40 to-pink-300/40 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.3, 0.6, 0.3],
+          x: [0, -40, 0],
+          y: [0, 30, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+      />
+
       {/* Decorative Elements */}
       <motion.div
-        className="absolute top-20 right-1/4 text-yellow-400"
+        className="absolute top-20 right-1/4 text-yellow-400 z-10"
         animate={{
           y: [0, -20, 0],
           rotate: [0, 180, 360],
