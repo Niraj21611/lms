@@ -71,7 +71,7 @@ const PopularCourses = () => {
   };
 
   return (
-    <div id="courses" className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white py-20 px-4 relative overflow-hidden">
+    <div id="courses" className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-white py-20 px-4 relative overflow-hidden">
       {/* Enhanced Decorative Elements */}
 
       {/* Floating Stars */}
@@ -313,7 +313,7 @@ const PopularCourses = () => {
                   />
 
                   {/* Image */}
-                  <div className="relative h-36 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+                  <div className="relative h-36 overflow-hidden bg-linear-to-br from-slate-100 to-slate-200">
                     <Image
                       src={
                         course.image
@@ -360,7 +360,7 @@ const PopularCourses = () => {
                     </h3>
 
                     <div className="flex items-center gap-1.5 mb-3 text-xs text-slate-600 relative z-10">
-                      <Users className="w-3.5 h-3.5 text-teal-600 flex-shrink-0" />
+                      <Users className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                       <p className="font-medium truncate">
                         {course.instructorName}
                       </p>

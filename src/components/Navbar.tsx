@@ -22,8 +22,7 @@ const Navbar: React.FC = () => {
 
   const navItems = [
     { name: "Home", href: "#" },
-    { name: "Courses", href: "#courses" },
-    { name: "Features", href: "#" },
+    { name: "Courses", href: "/#courses" },
     { name: "Blog", href: "/blog" },
   ];
 
@@ -42,7 +41,10 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* ✅ Updated Logo Section */}
           {/* ✅ Fixed Logo Section (aligned left, not centered) */}
-          <div className="shrink-0 flex items-center cursor-pointer" onClick={() => router.push("/")}>
+          <div
+            className="shrink-0 flex items-center cursor-pointer"
+            onClick={() => router.push("/")}
+          >
             <div className="relative w-60 h-60">
               {" "}
               <Image
@@ -74,6 +76,9 @@ const Navbar: React.FC = () => {
               className="ml-4 px-6 py-2.5 bg-linear-to-r from-primary to-primary-light hover:shadow-lg hover:shadow-primary/30 text-white rounded-xl text-sm font-semibold transition-all duration-300 transform hover:scale-105"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() =>
+                router.push("https://learning.raahacademy.in")
+              }
             >
               Sign In
             </motion.button>
@@ -112,9 +117,13 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
-              <button className="w-full bg-linear-to-r from-primary to-primary-light text-white px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 mt-4 shadow-md hover:shadow-lg">
+              <Link
+                href={"https://learning.raahacademy.in"}
+                target={"_blank"}
+                className="w-full bg-linear-to-r from-primary to-primary-light text-white px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 mt-4 shadow-md hover:shadow-lg"
+              >
                 Sign In
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}
