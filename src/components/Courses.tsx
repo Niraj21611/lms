@@ -16,7 +16,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Course {
-  id: string ;
+  id: string;
   image: string | null;
   courseName: string;
   instructorName: string;
@@ -299,7 +299,7 @@ const PopularCourses = () => {
 
               return (
                 <Link
-                  href={`${process.env.NEXT_PUBLIC_API_URL}/courses/${course.slug}`}
+                  href={`${process.env.NEXT_PUBLIC_API_URL}/student-dashboard/courses/${course.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   key={course.id}
