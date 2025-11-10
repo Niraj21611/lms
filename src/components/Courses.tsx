@@ -13,8 +13,10 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Course {
+  id: string ;
   image: string | null;
   courseName: string;
   instructorName: string;
@@ -22,6 +24,7 @@ interface Course {
     price: number;
     planType: "ANNUAL" | "ONE_TIME" | "MONTHLY";
   } | null;
+  slug: string;
 }
 
 const PopularCourses = () => {
@@ -71,7 +74,10 @@ const PopularCourses = () => {
   };
 
   return (
-    <div id="courses" className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-white py-20 px-4 relative overflow-hidden">
+    <div
+      id="courses"
+      className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-white py-20 px-4 relative overflow-hidden"
+    >
       {/* Enhanced Decorative Elements */}
 
       {/* Floating Stars */}
@@ -292,128 +298,135 @@ const PopularCourses = () => {
               const colors = planColors[planType];
 
               return (
-                <motion.div
-                  key={index}
-                  className={`group bg-white border-2 ${colors.border} rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer relative`}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
+                <Link
+                  href={`${process.env.NEXT_PUBLIC_API_URL}/courses/${course.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={course.id}
                 >
-                  {/* Background decoration on hover */}
                   <motion.div
-                    className={`absolute -top-10 -right-10 w-24 h-24 ${colors.light} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-
-                  {/* Image */}
-                  <div className="relative h-36 overflow-hidden bg-linear-to-br from-slate-100 to-slate-200">
-                    <Image
-                      src={
-                        course.image
-                          ? `${process.env.NEXT_PUBLIC_API_URL}${course.image}`
-                          : "/default.png"
-                      }
-                      alt={course.courseName}
-                      width={300}
-                      height={200}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    key={index}
+                    className={`group bg-white border-2 ${colors.border} rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer relative`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.05 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                  >
+                    {/* Background decoration on hover */}
+                    <motion.div
+                      className={`absolute -top-10 -right-10 w-24 h-24 ${colors.light} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
                     />
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <motion.div
-                        className={`w-12 h-12 rounded-full ${colors.bg} flex items-center justify-center shadow-xl`}
-                        whileHover={{ scale: 1.1 }}
-                      >
-                        <Play
-                          className="w-5 h-5 text-white ml-0.5"
-                          fill="white"
-                        />
-                      </motion.div>
-                    </div>
 
-                    {/* Plan Badge */}
-                    {course.subscription && (
-                      <div
-                        className={`absolute top-2 right-2 px-2 py-1 ${colors.bg} text-white text-[10px] font-bold rounded-full uppercase shadow-md`}
-                      >
-                        {course.subscription.planType}
+                    {/* Image */}
+                    <div className="relative h-36 overflow-hidden bg-linear-to-br from-slate-100 to-slate-200">
+                      <Image
+                        src={
+                          course.image
+                            ? `${process.env.NEXT_PUBLIC_API_URL}${course.image}`
+                            : "/default.png"
+                        }
+                        alt={course.courseName}
+                        width={300}
+                        height={200}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      {/* Play Button Overlay */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <motion.div
+                          className={`w-12 h-12 rounded-full ${colors.bg} flex items-center justify-center shadow-xl`}
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          <Play
+                            className="w-5 h-5 text-white ml-0.5"
+                            fill="white"
+                          />
+                        </motion.div>
                       </div>
-                    )}
-                  </div>
 
-                  {/* Info */}
-                  <div className="p-3.5 relative">
-                    {/* Decorative corner */}
-                    <div
-                      className={`absolute bottom-0 right-0 w-16 h-16 ${colors.light} opacity-30 rounded-tl-full`}
-                    />
-
-                    <h3 className="text-sm font-bold text-slate-900 mb-1.5 line-clamp-2 min-h-10 relative z-10 leading-snug group-hover:text-purple-700 transition-colors">
-                      {course.courseName}
-                    </h3>
-
-                    <div className="flex items-center gap-1.5 mb-3 text-xs text-slate-600 relative z-10">
-                      <Users className="w-3.5 h-3.5 text-teal-600 shrink-0" />
-                      <p className="font-medium truncate">
-                        {course.instructorName}
-                      </p>
-                    </div>
-
-                    {course.subscription ? (
-                      <div className="flex items-center justify-between relative z-10">
-                        <div className="flex items-baseline gap-0.5">
-                          <span className="text-lg font-bold text-slate-900">
-                            ₹{course.subscription.price}
-                          </span>
-                          <span className="text-[10px] text-slate-500 uppercase">
-                            /
-                            {course.subscription.planType === "ANNUAL"
-                              ? "yr"
-                              : course.subscription.planType === "MONTHLY"
-                              ? "mo"
-                              : "once"}
-                          </span>
+                      {/* Plan Badge */}
+                      {course.subscription && (
+                        <div
+                          className={`absolute top-2 right-2 px-2 py-1 ${colors.bg} text-white text-[10px] font-bold rounded-full uppercase shadow-md`}
+                        >
+                          {course.subscription.planType}
                         </div>
-                        <motion.button
-                          className={`px-3 py-1.5 ${colors.bg} text-white rounded-lg text-xs font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-md`}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Enroll
-                          <ArrowRight className="w-3 h-3" />
-                        </motion.button>
+                      )}
+                    </div>
+
+                    {/* Info */}
+                    <div className="p-3.5 relative">
+                      {/* Decorative corner */}
+                      <div
+                        className={`absolute bottom-0 right-0 w-16 h-16 ${colors.light} opacity-30 rounded-tl-full`}
+                      />
+
+                      <h3 className="text-sm font-bold text-slate-900 mb-1.5 line-clamp-2 min-h-10 relative z-10 leading-snug group-hover:text-purple-700 transition-colors">
+                        {course.courseName}
+                      </h3>
+
+                      <div className="flex items-center gap-1.5 mb-3 text-xs text-slate-600 relative z-10">
+                        <Users className="w-3.5 h-3.5 text-teal-600 shrink-0" />
+                        <p className="font-medium truncate">
+                          {course.instructorName}
+                        </p>
                       </div>
-                    ) : (
-                      <div className="flex items-center justify-between relative z-10">
-                        <span
-                          className={`px-3 py-1.5 ${
-                            colors.light
-                          } ${colors.bg.replace(
-                            "bg-",
-                            "text-"
-                          )} rounded-lg text-xs font-bold`}
-                        >
-                          FREE
-                        </span>
-                        <motion.button
-                          className={`px-3 py-1.5 ${colors.bg} text-white rounded-lg text-xs font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-md`}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Start
-                          <ArrowRight className="w-3 h-3" />
-                        </motion.button>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
+
+                      {course.subscription ? (
+                        <div className="flex items-center justify-between relative z-10">
+                          <div className="flex items-baseline gap-0.5">
+                            <span className="text-lg font-bold text-slate-900">
+                              ₹{course.subscription.price}
+                            </span>
+                            <span className="text-[10px] text-slate-500 uppercase">
+                              /
+                              {course.subscription.planType === "ANNUAL"
+                                ? "yr"
+                                : course.subscription.planType === "MONTHLY"
+                                ? "mo"
+                                : "once"}
+                            </span>
+                          </div>
+                          <motion.button
+                            className={`px-3 py-1.5 ${colors.bg} text-white rounded-lg text-xs font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-md`}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            Enroll
+                            <ArrowRight className="w-3 h-3" />
+                          </motion.button>
+                        </div>
+                      ) : (
+                        <div className="flex items-center justify-between relative z-10">
+                          <span
+                            className={`px-3 py-1.5 ${
+                              colors.light
+                            } ${colors.bg.replace(
+                              "bg-",
+                              "text-"
+                            )} rounded-lg text-xs font-bold`}
+                          >
+                            FREE
+                          </span>
+                          <motion.button
+                            className={`px-3 py-1.5 ${colors.bg} text-white rounded-lg text-xs font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-md`}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            Start
+                            <ArrowRight className="w-3 h-3" />
+                          </motion.button>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                </Link>
               );
             })}
           </div>
