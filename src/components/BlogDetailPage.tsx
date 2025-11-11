@@ -62,7 +62,7 @@ export default function BlogDetailPageClient({ blog }: BlogProps) {
         >
           <Link 
             href="/blog" 
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-teal-50 text-slate-700 hover:text-teal-700 font-semibold rounded-xl border-2 border-slate-200 hover:border-teal-300 transition-all duration-300 shadow-sm hover:shadow-md"
+            className="inline-flex mt-10 items-center gap-2 px-5 py-2.5 bg-white hover:bg-teal-50 text-slate-700 hover:text-teal-700 font-semibold rounded-xl border-2 border-slate-200 hover:border-teal-300 transition-all duration-300 shadow-sm hover:shadow-md"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Articles
