@@ -299,7 +299,7 @@ const PopularCourses = () => {
 
               return (
                 <Link
-                  href={`${process.env.NEXT_PUBLIC_API_URL}/student-dashboard/courses/${course.slug}`}
+                  href={`${process.env.NEXT_PUBLIC_API_URL}/student-dashboard/courses/${course.slug}/buy`}
                   target="_blank"
                   rel="noopener noreferrer"
                   key={course.id}
